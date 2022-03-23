@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="auth_oauth_keycloak.x_keycloak" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='enabled']" position="after">
+          <field name="x_keycloak" string="Keycloak"/>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="auth_oauth.view_oauth_provider_form"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">auth.oauth.provider</field>
+    <field name="name">auth.oauth.provider.form customization</field>
+    <field name="priority">99</field>
+    <field name="type">form</field>
+  </record>
+</odoo>
