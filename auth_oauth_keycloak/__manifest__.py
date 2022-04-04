@@ -25,4 +25,5 @@
         'views/ir_model_fields.xml',
         'views/ir_ui_view.xml',
     ],
+    "images": ["images/screen.png"],
 }
