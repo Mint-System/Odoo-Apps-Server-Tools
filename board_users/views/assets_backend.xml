@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <template id="assets_backend" name="board_users_backend" inherit_id="web.assets_backend">
-        <xpath expr="." position="inside">
-            <script type="text/javascript" src="/board_users/static/src/js/abstract_controller_inherit.js"></script>
-            <!-- <script type="text/javascript" src="/board_users/static/src/js/board_view_inherit.js"></script> -->
-        </xpath>
-    </template>
-</odoo>
