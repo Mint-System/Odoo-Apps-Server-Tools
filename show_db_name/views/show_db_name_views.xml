@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <!-- inherting assets template in (view/show_db_name.xml) file to add java script file web assets -->
-    <template id="assets_backend" name="show_db_name_assets" inherit_id="web.assets_backend">
-        <xpath expr="." position="inside">
-            <script type="text/javascript" src="/show_db_name/static/src/js/user_menu.js"></script>
-        </xpath>
-    </template>
-</odoo>
