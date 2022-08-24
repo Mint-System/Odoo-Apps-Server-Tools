@@ -9,7 +9,7 @@
     "version": "14.0.1.0.0",
     "license": "AGPL-3",
     "depends": ["auth_totp"],
-    "data": ["views/auth_totp_cidr.xml"],
+    "data": ["views/auth_totp_cidr.xml", "security/ir.model.access.csv"],
     "application": False,
     "auto_install": False,
     "images": ["images/screen.png"],

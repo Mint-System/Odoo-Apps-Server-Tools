@@ -1,18 +1,16 @@
-from odoo import models, fields
+from odoo import models, fields, api
 import ipaddress
 from odoo.exceptions import ValidationError
+import logging
+_logger = logging.getLogger(__name__)
 
 
-class ResUsersInherit(models.Model):
-    _inherit = 'res.users'
-
-    totp_cidr_ids = fields.One2many('auth_totp.cidr', ondelete='restrict')
-
-class Totpidr(models.Model):
+class TOTPCidr(models.Model):
     _name = 'auth_totp.cidr'
+    _description = 'Allowed TOTP Cidr'
 
-    user_ids = fields.Many2many('res.users', ondelete='restrict')
-    cidr = fields.Char(string='cidr')
+    user_ids = fields.Many2many('res.users',string='Users', ondelete='restrict')
+    cidr = fields.Char(string='Cidr')
 
     @api.constrains('cidr')
     def _validate_cidr(self):
