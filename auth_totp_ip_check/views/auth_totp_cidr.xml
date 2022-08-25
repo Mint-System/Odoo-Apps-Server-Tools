@@ -24,12 +24,12 @@
   </record>
 
   <record id="ir_auth_totp_cidr_act" model="ir.actions.act_window">
-    <field name="name">Allowed TOTP Cidrs</field>
+    <field name="name">Disable TOTP Check</field>
     <field name="res_model">auth_totp.cidr</field>
     <field name="view_mode">tree,form</field>
   </record>
 
-  <menuitem name="Allowed TOTP Cidrs"
+  <menuitem name="Disable TOTP Check"
     id="menu_ir_auth_totp_cidr"
     action="ir_auth_totp_cidr_act"
     parent="base.menu_security"
