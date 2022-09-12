@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="default_metric" model="ir.metric" forcecreate="True">
+        <field name="name">cron_jobs_not_triggered</field>
+        <field name="description">Cron jobs with next run date older than two days ago.</field>
+        <field name="type">gauge</field>
+        <field name="model_id" eval="ref('base.model_ir_cron')"/>
+        <field name="domain">['&amp;',['nextcall','&lt;=',(datetime.datetime.now() - datetime.timedelta(days=2)).strftime('%Y-%m-%d')],['active','=',True]]</field>
+    </record>
+</odoo>
