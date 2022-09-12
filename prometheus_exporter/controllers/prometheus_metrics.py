@@ -18,8 +18,8 @@ class PrometheusController(http.Controller):
         for metric in request.env['ir.metric'].sudo().search([]):
             if metric.type == 'gauge':
                 g = Gauge(metric.name, metric.description, registry=registry)
-                g.set(metric._get_model_count())
+                g.set(metric._get_value())
             if metric.type == 'counter':
                 c = Counter(metric.name, metric.description, registry=registry)
-                c.inc(metric._get_model_count())
+                c.inc(metric._get_value())
         return generate_latest(registry)
