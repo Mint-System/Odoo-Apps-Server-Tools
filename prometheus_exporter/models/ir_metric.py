@@ -76,7 +76,6 @@ class Metric(models.Model):
         if self.field_id:
             records = related_model.search(domain)
             values = records.mapped(self.field)
-            _logger.warning([values,operation])
             if operation == 'avg':
                 return avg(values)
             elif operation == 'sum':
