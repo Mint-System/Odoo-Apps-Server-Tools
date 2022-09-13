@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ir_metric,access_ir_metric,prometheus_exporter.model_ir_metric,base.group_user,1,1,1,1
