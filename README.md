@@ -15,4 +15,5 @@ git clone  git@gitlab.com:mint-system/odoo-apps-server-tools.git
 
 | Module | Summary |
 | --- | --- |
+| [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
 | [show_db_name](show_db_name) |         Show the database name on the top right of web page without needing to debug mode. |
