@@ -15,5 +15,6 @@ git clone  git@gitlab.com:mint-system/odoo-apps-server-tools.git
 
 | Module | Summary |
 | --- | --- |
+| [auth_oauth_keycloak](auth_oauth_keycloak) |         Enables Keycloack integration for the OAuth2 Authentication module. |
 | [auth_totp_ip_check](auth_totp_ip_check) |         Disable totp for specific ip networks. |
 | [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
