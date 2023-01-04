@@ -12,7 +12,6 @@ class Metric(models.Model):
     name = fields.Char(required=True)
     description = fields.Char()
     active = fields.Boolean(
-        string='Active',
         default=True,
         help='''Activate or Deactivate the print action button.
                 If no active then move to the status \'archive\'.
@@ -26,7 +25,6 @@ class Metric(models.Model):
     ], required=True, default='gauge')
     model_id = fields.Many2one(
         'ir.model',
-        string='Model',
         required=True,
         ondelete='cascade',
     )
@@ -39,7 +37,6 @@ class Metric(models.Model):
                 Check this in the URL after the \'model=\'.''',
     )
     domain = fields.Text(
-        string='Domain',
         default='[]',
     )
     field_id = fields.Many2one('ir.model.fields', 'Measured Field', domain="[('store', '=', True), ('model_id', '=', model_id), ('ttype', 'in', ['float','integer','monetary'])]")

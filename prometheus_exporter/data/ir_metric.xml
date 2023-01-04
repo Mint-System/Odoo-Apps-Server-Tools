@@ -15,7 +15,6 @@
         <field name="type">gauge</field>
         <field name="model_id" eval="ref('base.model_res_users')"/>
         <field name="domain">['&amp;',('active','=',True),('share','=',False)]</field>
-        <field name="field_id" eval="ref('base.model_res_users')"/>
         <field name="field_id" eval="ref('base.field_res_users__email')"/>
         <field name="operation">count</field>
     </record>
