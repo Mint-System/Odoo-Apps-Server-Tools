@@ -5,7 +5,7 @@
         <field name="model">ir.mail_server</field>
         <field name="inherit_id" ref="base.ir_mail_server_form" />
         <field name="arch" type="xml">
-            <field name="from_filter" position="before">
+            <field name="sequence" position="before">
                 <field name="database_filter" />
             </field>
         </field>
