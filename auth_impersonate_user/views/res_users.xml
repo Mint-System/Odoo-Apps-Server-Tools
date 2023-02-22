@@ -1,0 +1,15 @@
+<odoo>
+
+    <record id="view_users_tree" model="ir.ui.view">
+        <field name="name">auth_impersonate_user.view_users_tree</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="can_impersonate_user" invisible="1" />
+                <button name="impersonate_user" attrs="{'invisible': [('can_impersonate_user', '=', False)]}" string="Impersonate" type="object" class="oe_highlight" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

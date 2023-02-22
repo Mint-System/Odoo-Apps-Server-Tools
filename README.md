@@ -14,5 +14,6 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 
 | Module | Summary |
 | --- | --- |
-| [mail_server_filter](mail_server_filter) |         Filter outgoing and incmoing mail server by database name. |
+| [auth_impersonate_user](auth_impersonate_user) |         Impersonate another users. |
+| [mail_server_filter](mail_server_filter) |         Filter outgoing and incoming mail server by database name. |
 | [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
