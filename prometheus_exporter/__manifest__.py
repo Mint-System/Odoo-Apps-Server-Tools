@@ -8,7 +8,7 @@
     "category": "Technical",
     "version": "14.0.1.2.0",
     "license": "AGPL-3",
-    "depends": ["base", "web", "mail"],
+    "depends": ["mail", "resource"],
     "data": [
         "security/ir.model.access.csv",
         "data/ir_metric.xml",
