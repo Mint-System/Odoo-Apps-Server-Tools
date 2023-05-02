@@ -6,9 +6,9 @@
     "author": "Mint System GmbH, Odoo Community Association (OCA)",
     "website": "https://www.mint-system.ch",
     "category": "Technical",
-    "version": "15.0.1.1.0",
+    "version": "15.0.1.2.0",
     "license": "AGPL-3",
-    "depends": ["base", "resource","web"],
+    "depends": ["mail", "resource"],
     "data": [
         "security/ir.model.access.csv",
         "data/ir_metric.xml",
