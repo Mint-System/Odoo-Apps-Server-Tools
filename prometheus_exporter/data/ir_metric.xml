@@ -15,8 +15,17 @@
         <field name="type">gauge</field>
         <field name="model_id" eval="ref('base.model_res_users')"/>
         <field name="domain">['&amp;',('active','=',True),('share','=',False)]</field>
+        <field name="field_id" eval="ref('base.model_res_users')"/>
         <field name="field_id" eval="ref('base.field_res_users__email')"/>
         <field name="operation">count</field>
+    </record>
+
+    <record id="pending_mails" model="ir.metric" forcecreate="True">
+        <field name="name">pending_mails</field>
+        <field name="description">	Pending outgoing mails within the last 30 days.</field>
+        <field name="type">gauge</field>
+        <field name="model_id" eval="ref('mail.model_mail_mail')"/>
+        <field name="domain">[["date",">=",(datetime.date.today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d')]]</field>
     </record>
 
 </odoo>
