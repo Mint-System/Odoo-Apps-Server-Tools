@@ -13,5 +13,5 @@
     "installable": True,
     "application": False,
     "images": ["images/screen.png"],
-    "assets": {"web.assets_backend": ["home_background_image/static/src/js/home.js"]},
+    "assets": {"web._assets_common_styles": ["home_background_image/static/src/scss/ui.scss"]},
 }
