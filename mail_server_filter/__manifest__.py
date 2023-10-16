@@ -9,10 +9,7 @@
     "version": "14.0.1.0.1",
     "license": "AGPL-3",
     "depends": ["mail"],
-    "data": [
-        "views/ir_mail_server.xml",
-        "views/fetchmail_server.xml"
-    ],
+    "data": ["views/ir_mail_server.xml", "views/fetchmail_server.xml"],
     "installable": True,
     "application": False,
     "auto_install": False,

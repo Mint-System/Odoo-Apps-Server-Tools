@@ -18,5 +18,7 @@
     "application": False,
     "auto_install": False,
     "images": ["images/screen.png"],
-    "external_dependencies": {"python": ["prometheus_client"],},
+    "external_dependencies": {
+        "python": ["prometheus_client"],
+    },
 }

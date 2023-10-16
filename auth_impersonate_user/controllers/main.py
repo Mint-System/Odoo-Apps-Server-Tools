@@ -14,6 +14,10 @@ class ImpersonateHome(Home):
     def impersonate_user(self, **kw):
         uid = request.env.user.id
         if request.env.user.can_impersonate_user:
+            # Backup original session info
+            request.session.impersonator_uid = request.session.uid
+            request.session.impersonator_login = request.session.login
+             # Set new session info
             uid = request.session.uid = int(request.params["uid"])
             request.env["res.users"].clear_caches()
             request.session.session_token = security.compute_session_token(
@@ -37,7 +41,7 @@ class ImpersonateHome(Home):
                 request.session, request.env
             )
 
-            return request.redirect(self._login_redirect(request.session.uid))
+            return http.local_redirect(self._login_redirect(request.session.uid))
 
         request.session.logout(keep_db=True)
-        return request.redirect(redirect, 303)
+        return http.local_redirect(redirect)

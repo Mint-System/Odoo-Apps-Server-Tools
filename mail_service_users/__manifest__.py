@@ -8,7 +8,7 @@
     "category": "Technical",
     "version": "14.0.1.1.0",
     "license": "AGPL-3",
-    "depends": ["base","mail"],
+    "depends": ["base", "mail"],
     "data": ["views/base.xml"],
     "installable": True,
     "application": False,
