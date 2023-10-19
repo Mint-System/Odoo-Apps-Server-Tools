@@ -14,6 +14,8 @@ class ResUsers(models.Model):
 
     def impersonate_user(self):
         self.ensure_one()
+        _logger.info("User <%s> impersonates user <%s>.", self.env.user.login, self.login)
+        self._update_last_login()
         return {
             'type': 'ir.actions.act_url',
             'target': 'self',
