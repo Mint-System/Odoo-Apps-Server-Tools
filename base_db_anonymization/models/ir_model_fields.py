@@ -1,0 +1,96 @@
+import ast
+import logging
+import random
+
+from odoo import _, fields, models
+
+_logger = logging.getLogger(__name__)
+
+
+class IrModelField(models.Model):
+    _inherit = "ir.model.fields"
+
+    anonymize_id = fields.Many2one(
+        "ir.model.fields.anonymize", compute="_compute_anonymize_id"
+    )
+
+    def _compute_anonymize_id(self):
+        anonymize_ids = self.env["ir.model.fields.anonymize"].search([])
+        for field in self:
+            anonymize_id = anonymize_ids.filtered(lambda a: a.field_id.id == field.id)[
+                :1
+            ]
+            field.anonymize_id = anonymize_id.id if anonymize_ids else False
+
+
+class IrModelFieldAnonymize(models.Model):
+    _name = "ir.model.fields.anonymize"
+    _description = "Anonymization Configuration"
+
+    name = fields.Char(related="field_id.name")
+    model = fields.Char(related="field_id.model")
+    model_id = fields.Many2one(related="field_id.model_id")
+    field_id = fields.Many2one("ir.model.fields", copy=False)
+    anonymize_strategy = fields.Selection(
+        [("id", "ID"), ("value", "Value"), ("random", "Random"), ("clear", "Clear")],
+        help="Anonymiztion strategy. \n"
+        "- 'id' Concat model name and database id.\n"
+        "- 'value' Enter a value that is applied to all records\n"
+        "- 'random' Generate random values based on data type\n"
+        "- 'clear' Clear field content",
+    )
+    domain = fields.Char(required=True, default="[]")
+    anonymize_value = fields.Char(default="Lorem Ipsum")
+    anonymize_random_range = fields.Char(help="Format: start, stop")
+    output_new_value = fields.Boolean()
+    is_anonymized = fields.Boolean()
+
+    def action_anonymize_records(self):
+        messages = []
+        for anon in self.filtered(lambda a: not a.is_anonymized):
+            domain = ast.literal_eval(anon.domain)
+            records = self.env[anon.field_id.model].search(domain)
+            fieldname = anon.field_id.name
+
+            # ID strategy
+            if anon.anonymize_strategy == "id":
+                for rec in records:
+                    new_value = (
+                        anon.field_id.model.replace(".", "_") + "_" + str(rec.id)
+                    )
+                    if anon.output_new_value:
+                        messages.append(
+                            getattr(rec, fieldname, "-") + "  >>>  " + new_value
+                        )
+                    rec.write({fieldname: new_value})
+
+            # Random strategy
+            if anon.anonymize_strategy == "random":
+                for rec in records:
+                    new_value = random.randrange(
+                        *map(int, anon.anonymize_random_range.split(", "))
+                    )
+                    if anon.output_new_value:
+                        messages.append(
+                            getattr(rec, fieldname, "-") + "  >>>  " + str(new_value)
+                        )
+                    rec.write({fieldname: new_value})
+
+            # Value strategy
+            if anon.anonymize_strategy == "value":
+                for rec in records:
+                    if anon.output_new_value:
+                        messages.append(
+                            getattr(rec, fieldname, "-")
+                            + "  >>>  "
+                            + anon.anonymize_value
+                        )
+                records.write({fieldname: anon.anonymize_value})
+
+            # Clear strategy
+            if anon.anonymize_strategy == "clear":
+                records.write({fieldname: False})
+
+            anon.write({"is_anonymized": True})
+
+        _logger.warning(_("New values:\n") + "\n".join(messages))

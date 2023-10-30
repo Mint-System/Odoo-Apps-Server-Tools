@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_model_fields_anonymize_form" model="ir.ui.view">
+        <field name="model">ir.model.fields.anonymize</field>
+        <field name="arch" type="xml">
+            <form string="User Settings">
+                <header>
+                    <button name="action_anonymize_records" type="object" string="Anonymize Records" confirm="This action is irreverisble! Do you really want to proceed?" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group name="anonymize">
+                        <group>
+                            <field name="field_id"/>
+                            <field name="model" invisible="1" />
+                            <field name="domain" widget="domain" options="{'model': 'model'}" />
+                            <field name="anonymize_value" attrs="{'required': [('anonymize_strategy', '=', 'value')], 'invisible': [('anonymize_strategy', '!=', 'value')]}"/>
+                            <field name="anonymize_random_range" attrs="{'required': [('anonymize_strategy', '=', 'random')], 'invisible': [('anonymize_strategy', '!=', 'random')]}"/>
+                        </group>
+                        <group>
+                            <field name="anonymize_strategy"/>
+                            <field name="output_new_value"/>
+                            <field name="is_anonymized"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_model_fields_anonymize_tree" model="ir.ui.view">
+        <field name="model">ir.model.fields.anonymize</field>
+        <field name="arch" type="xml">
+            <tree>
+                <header>
+                    <button name="action_anonymize_records" type="object" string="Anonymize Records" confirm="This action is irreverisble! Do you really want to proceed?" />
+                </header>
+                <field name="field_id"/>
+                <field name="anonymize_strategy"/>
+                <field name="model_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_model_fields_anonymize" model="ir.actions.act_window">
+        <field name="name">Fields Anonymize</field>
+        <field name="res_model">ir.model.fields.anonymize</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_model_fields_anonymize_tree"/>
+    </record>
+
+    <menuitem action="action_model_fields_anonymize" id="ir_model_model_fields_anonymize" parent="base.next_id_9"/>
+
+</odoo>
