@@ -65,8 +65,9 @@
     <field name="anonymize_strategy">clear</field>
   </record>
   <record id="field_hr_employee__work_email" model="ir.model.fields.anonymize">
-    <field name="field_id" ref="base.field_hr_employee__work_email" />
+    <field name="field_id" ref="hr.field_hr_employee__work_email" />
     <field name="anonymize_strategy">value</field>
     <field name="anonymize_value">mail@example.com</field>
   </record>
+  
 </odoo>
