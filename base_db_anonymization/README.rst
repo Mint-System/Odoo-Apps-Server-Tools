@@ -6,18 +6,9 @@
 Base DB Anonymization
 =====================
 
-Replace value of marked fields with fake data.
+Anonymize content of selected database fields.
 
 For a detailed documentation have a look at https://www.odoo-wiki.org/base-db-anonymization.html
-
-Usage
-~~~~~
-
-Clone module into Odoo addon directory.
-
-.. code-block:: bash
-
-    git clone git@github.com:mint-system/odoo-app-base-db-anonymization.git ./addons/base_db_anonymization
 
 Configuration
 ~~~~~~~~~~~~~

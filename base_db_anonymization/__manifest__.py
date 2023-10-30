@@ -1,7 +1,7 @@
 {
     "name": "Base DB Anonymization",
     "summary": """
-        Replace value of marked fields with fake data.
+        Anonymize content of selected database fields.
     """,
     "author": "Mint System GmbH, Odoo Community Association (OCA)",
     "website": "https://www.mint-system.ch",
