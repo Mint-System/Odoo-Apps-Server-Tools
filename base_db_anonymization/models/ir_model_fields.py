@@ -2,7 +2,7 @@ import ast
 import logging
 import random
 
-from odoo import _, fields, models
+from odoo import _, api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -29,7 +29,9 @@ class IrModelFieldAnonymize(models.Model):
 
     name = fields.Char(related="field_id.name")
     model = fields.Char(related="field_id.model")
-    model_id = fields.Many2one(related="field_id.model_id")
+    model_id = fields.Many2one(
+        "ir.model", compute="_compute_model_id", store=True, readonly=False
+    )
     field_id = fields.Many2one("ir.model.fields", copy=False)
     anonymize_strategy = fields.Selection(
         [("id", "ID"), ("value", "Value"), ("random", "Random"), ("clear", "Clear")],
@@ -45,8 +47,14 @@ class IrModelFieldAnonymize(models.Model):
     output_new_value = fields.Boolean()
     is_anonymized = fields.Boolean()
 
+    @api.depends("field_id")
+    def _compute_model_id(self):
+        for anon in self:
+            anon.model_id = anon.field_id.model_id
+
     def action_anonymize_records(self):
         messages = []
+        _logger.warning(self)
         for anon in self.filtered(lambda a: not a.is_anonymized):
             domain = ast.literal_eval(anon.domain)
             records = self.env[anon.field_id.model].search(domain)
@@ -60,7 +68,11 @@ class IrModelFieldAnonymize(models.Model):
                     )
                     if anon.output_new_value:
                         messages.append(
-                            getattr(rec, fieldname, "-") + "  >>>  " + new_value
+                            fieldname
+                            + ": "
+                            + getattr(rec, fieldname, "-")
+                            + "  >>>  "
+                            + new_value
                         )
                     rec.write({fieldname: new_value})
 
@@ -72,7 +84,11 @@ class IrModelFieldAnonymize(models.Model):
                     )
                     if anon.output_new_value:
                         messages.append(
-                            getattr(rec, fieldname, "-") + "  >>>  " + str(new_value)
+                            fieldname
+                            + ": "
+                            + getattr(rec, fieldname, "-")
+                            + "  >>>  "
+                            + str(new_value)
                         )
                     rec.write({fieldname: new_value})
 
@@ -81,11 +97,13 @@ class IrModelFieldAnonymize(models.Model):
                 for rec in records:
                     if anon.output_new_value:
                         messages.append(
-                            getattr(rec, fieldname, "-")
+                            fieldname
+                            + ": "
+                            + str(getattr(rec, fieldname, "-"))
                             + "  >>>  "
                             + anon.anonymize_value
                         )
-                records.write({fieldname: anon.anonymize_value})
+                records.write({fieldname: int(anon.anonymize_value)})
 
             # Clear strategy
             if anon.anonymize_strategy == "clear":
@@ -93,4 +111,5 @@ class IrModelFieldAnonymize(models.Model):
 
             anon.write({"is_anonymized": True})
 
-        _logger.warning(_("New values:\n") + "\n".join(messages))
+        if messages:
+            _logger.warning(_("New values:\n") + "\n".join(messages))

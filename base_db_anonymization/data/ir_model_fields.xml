@@ -69,5 +69,5 @@
     <field name="anonymize_strategy">value</field>
     <field name="anonymize_value">mail@example.com</field>
   </record>
-  
+
 </odoo>
