@@ -34,15 +34,15 @@ class IrModelFieldAnonymize(models.Model):
     )
     field_id = fields.Many2one("ir.model.fields", copy=False)
     anonymize_strategy = fields.Selection(
-        [("id", "ID"), ("value", "Value"), ("random", "Random"), ("clear", "Clear")],
+        [("id", "ID"), ("value", "Value"), ("random", "Random"), ("clear", "Clear"),],
         help="Anonymiztion strategy. \n"
         "- 'id' Concat model name and database id.\n"
-        "- 'value' Enter a value that is applied to all records\n"
-        "- 'random' Generate random values based on data type\n"
-        "- 'clear' Clear field content",
+        "- 'value' Enter a value that is applied to all records.\n"
+        "- 'random' Generate random values based on data type.\n"
+        "- 'clear' Clear field content.",
     )
     domain = fields.Char(required=True, default="[]")
-    anonymize_value = fields.Char(default="Lorem Ipsum")
+    anonymize_value = fields.Char(default="Lorem Ipsum {rec.id}")
     anonymize_random_range = fields.Char(help="Format: start, stop")
     output_new_value = fields.Boolean()
     is_anonymized = fields.Boolean()
@@ -59,6 +59,7 @@ class IrModelFieldAnonymize(models.Model):
             domain = ast.literal_eval(anon.domain)
             records = self.env[anon.field_id.model].search(domain)
             fieldname = anon.field_id.name
+            fieldtype = anon.field_id.ttype
 
             # ID strategy
             if anon.anonymize_strategy == "id":
@@ -72,7 +73,7 @@ class IrModelFieldAnonymize(models.Model):
                             + ": "
                             + getattr(rec, fieldname, "-")
                             + "  >>>  "
-                            + new_value
+                            + str(new_value)
                         )
                     rec.write({fieldname: new_value})
 
@@ -95,15 +96,19 @@ class IrModelFieldAnonymize(models.Model):
             # Value strategy
             if anon.anonymize_strategy == "value":
                 for rec in records:
+                    new_value = ast.literal_eval(anon.anonymize_value.format(id=rec.id))
+                    new_value = int(new_value) if fieldtype == 'integer' else new_value
+                    new_value = float(new_value) if fieldtype == 'float' else new_value
+                    new_value = bool(new_value) if fieldtype == 'boolean' else new_value
                     if anon.output_new_value:
                         messages.append(
                             fieldname
                             + ": "
                             + str(getattr(rec, fieldname, "-"))
                             + "  >>>  "
-                            + anon.anonymize_value
+                            + str(new_value)
                         )
-                records.write({fieldname: int(anon.anonymize_value)})
+                    rec.write({fieldname: new_value})
 
             # Clear strategy
             if anon.anonymize_strategy == "clear":
