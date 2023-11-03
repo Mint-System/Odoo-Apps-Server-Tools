@@ -34,7 +34,12 @@ class IrModelFieldAnonymize(models.Model):
     )
     field_id = fields.Many2one("ir.model.fields", copy=False)
     anonymize_strategy = fields.Selection(
-        [("id", "ID"), ("value", "Value"), ("random", "Random"), ("clear", "Clear"),],
+        [
+            ("id", "ID"),
+            ("value", "Value"),
+            ("random", "Random"),
+            ("clear", "Clear"),
+        ],
         help="Anonymiztion strategy. \n"
         "- 'id' Concat model name and database id.\n"
         "- 'value' Enter a value that is applied to all records.\n"
@@ -97,9 +102,9 @@ class IrModelFieldAnonymize(models.Model):
             if anon.anonymize_strategy == "value":
                 for rec in records:
                     new_value = ast.literal_eval(anon.anonymize_value.format(id=rec.id))
-                    new_value = int(new_value) if fieldtype == 'integer' else new_value
-                    new_value = float(new_value) if fieldtype == 'float' else new_value
-                    new_value = bool(new_value) if fieldtype == 'boolean' else new_value
+                    new_value = int(new_value) if fieldtype == "integer" else new_value
+                    new_value = float(new_value) if fieldtype == "float" else new_value
+                    new_value = bool(new_value) if fieldtype == "boolean" else new_value
                     if anon.output_new_value:
                         messages.append(
                             fieldname

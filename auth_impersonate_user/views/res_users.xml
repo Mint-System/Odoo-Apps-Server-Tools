@@ -7,7 +7,21 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='company_id']" position="after">
                 <field name="can_impersonate_user" invisible="1" />
-                <button name="impersonate_user" attrs="{'invisible': [('can_impersonate_user', '=', False)]}" string="Impersonate" type="object" class="oe_highlight" />
+                <field name="can_be_impersonated" invisible="1" />
+                <button name="impersonate_user" attrs="{'invisible': ['|',('can_impersonate_user', '=', False),('can_be_impersonated', '=', False)]}" string="Impersonate" type="object" class="oe_highlight" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_users_form" model="ir.ui.view">
+        <field name="name">auth_impersonate_user.view_users_form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="can_impersonate_user" invisible="1" />
+                <field name="can_be_impersonated" invisible="1" />
+                <button name="impersonate_user" attrs="{'invisible': ['|',('can_impersonate_user', '=', False),('can_be_impersonated', '=', False)]}" string="Impersonate" type="object" />
             </xpath>
         </field>
     </record>

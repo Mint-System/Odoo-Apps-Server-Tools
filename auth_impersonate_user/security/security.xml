@@ -2,7 +2,13 @@
 <odoo>
 
     <record id="impersonate_user_group" model="res.groups">
-        <field name="name">Impersonate User</field>
+        <field name="name">Can be impersonated</field>
+        <field name="category_id" ref="base.module_category_usability" />
+    </record>
+
+    <record id="impersonate_admin_group" model="res.groups">
+        <field name="name">Can impersonate user</field>
+        <field name="category_id" ref="base.module_category_usability" />
         <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
     </record>
 

@@ -14,9 +14,15 @@ class ImpersonateHome(Home):
     def impersonate_user(self, **kw):
         uid = request.env.user.id
         if request.env.user.can_impersonate_user:
+
+            _logger.info(
+                "User <%s> impersonates user <%s>.", uid, int(request.params["uid"])
+            )
+
             # Backup original session info
             request.session.impersonator_uid = request.session.uid
             request.session.impersonator_login = request.session.login
+
             # Set new session info
             uid = request.session.uid = int(request.params["uid"])
             request.env["res.users"].clear_caches()
@@ -31,6 +37,13 @@ class ImpersonateHome(Home):
 
         # Exit impersonation first
         if request.session.impersonator_uid:
+
+            _logger.info(
+                "User <%s> exits impersonation of user <%s>.",
+                request.session.impersonator_uid,
+                request.session.uid,
+            )
+
             # Restore session info
             request.session.uid = request.session.impersonator_uid
             request.session.login = request.session.impersonator_login
