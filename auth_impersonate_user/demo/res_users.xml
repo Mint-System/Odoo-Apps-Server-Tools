@@ -1,0 +1,14 @@
+<odoo>
+
+    <odoo>
+        <record id="base.user_demo" model="res.users">
+            <field eval="[(4, ref('auth_impersonate_user.impersonate_user_group'))]" name="groups_id" />
+        </record>
+    </odoo>
+
+    <odoo>
+        <record id="base.user_admin" model="res.users">
+            <field eval="[(4, ref('auth_impersonate_user.impersonate_admin_group'))]" name="groups_id" />
+        </record>
+    </odoo>
+</odoo>
