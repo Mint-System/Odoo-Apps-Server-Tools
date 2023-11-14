@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="can_anonymize_records" model="res.groups">
+        <field name="name">Can anonymize records</field>
+        <field name="category_id" ref="base.module_category_usability" />
+    </record>
+
+</odoo>

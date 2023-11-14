@@ -1,4 +1,4 @@
-<odoo>
+<odoo noupdate="True">
 
   <record id="field_res_users__login" model="ir.model.fields.anonymize">
     <field name="field_id" ref="base.field_res_users__login" />
