@@ -1,6 +1,7 @@
-import logging
+import logging, ast
 
 from odoo import _, api, fields, models
+import datetime
 
 _logger = logging.getLogger(__name__)
 from odoo.exceptions import ValidationError
@@ -69,18 +70,32 @@ class Metric(models.Model):
             if not str.islower(rec.name):
                 raise ValidationError(_("Metric name must be lower case."))
 
+    def _default_domains(self):
+        domain = "[]"
+        if self.name == "cron_jobs_not_triggered":
+            domain = ['&',('nextcall','<=',(datetime.datetime.now() - datetime.timedelta(days=2)).strftime('%Y-%m-%d')),('active','=',True)]
+        if self.name == "pending_mails":
+            domain = [("date",">=",(datetime.datetime.now() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]
+        return domain
+
     def _get_model_count(self):
         """Count model records."""
         self.ensure_one()
         related_model = self.env[self.model]
-        domain = eval(self.domain)
+        try:
+            domain = ast.literal_eval(self.domain)
+        except:
+            domain = self._default_domains()
         return related_model.search_count(domain)
 
     def _get_field_value(self):
         """Run operation for selected field."""
         self.ensure_one()
         related_model = self.env[self.model]
-        domain = eval(self.domain)
+        try:
+            domain = ast.literal_eval(self.domain)
+        except:
+            domain = self._default_domains()
         operation = self.operation
         if self.field_id:
             records = related_model.search(domain)

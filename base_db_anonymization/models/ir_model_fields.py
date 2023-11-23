@@ -2,8 +2,8 @@ import ast
 import logging
 import random
 
-from odoo.exceptions import AccessError
 from odoo import _, api, fields, models
+from odoo.exceptions import AccessError
 
 _logger = logging.getLogger(__name__)
 
@@ -61,7 +61,7 @@ class IrModelFieldAnonymize(models.Model):
 
     def action_anonymize_records(self):
         messages = []
-        if not self.env.user.has_group('base_db_anonymization.can_anonymize_records'):
+        if not self.env.user.has_group("base_db_anonymization.can_anonymize_records"):
             raise AccessError(_("User is not allowed to anonymize records."))
 
         for anon in self.filtered(lambda a: not a.is_anonymized):
@@ -105,7 +105,7 @@ class IrModelFieldAnonymize(models.Model):
             # Value strategy
             if anon.anonymize_strategy == "value":
                 for rec in records:
-                    new_value = anon.anonymize_value.format({'id':rec.id})
+                    new_value = anon.anonymize_value.format({"id": rec.id})
                     new_value = int(new_value) if fieldtype == "integer" else new_value
                     new_value = float(new_value) if fieldtype == "float" else new_value
                     new_value = bool(new_value) if fieldtype == "boolean" else new_value
