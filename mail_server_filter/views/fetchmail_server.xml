@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_email_server_form" model="ir.ui.view">
+        <field name="name">mail_server_filter.view_email_server_form</field>
+        <field name="model">fetchmail.server</field>
+        <field name="inherit_id" ref="mail.view_email_server_form" />
+        <field name="arch" type="xml">
+            <field name="server_type" position="after">
+                <field name="database_filter" />
+            </field>
+        </field>
+    </record>
+</odoo>

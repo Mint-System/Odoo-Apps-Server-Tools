@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="default_metric" model="ir.metric" forcecreate="True">
+        <field name="name">cron_jobs_not_triggered</field>
+        <field
+            name="description"
+        >Cron jobs with next run date older than two days ago.</field>
+        <field name="type">gauge</field>
+        <field name="model_id" eval="ref('base.model_ir_cron')" />
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="active_users" model="ir.metric" forcecreate="True">
+        <field name="name">active_users</field>
+        <field name="description">Count active users.</field>
+        <field name="type">gauge</field>
+        <field name="model_id" eval="ref('base.model_res_users')" />
+        <field name="domain">['&amp;',('active','=',True),('share','=',False)]</field>
+        <field name="field_id" eval="ref('base.field_res_users__email')" />
+        <field name="operation">count</field>
+    </record>
+
+    <record id="pending_mails" model="ir.metric" forcecreate="True">
+        <field name="name">pending_mails</field>
+        <field
+            name="description"
+        >	Pending outgoing mails within the last 30 days.</field>
+        <field name="type">gauge</field>
+        <field name="model_id" eval="ref('mail.model_mail_mail')" />
+        <field name="domain">[]</field>
+    </record>
+
+</odoo>
