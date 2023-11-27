@@ -1,6 +1,6 @@
+import ast
 import datetime
 import logging
-import ast
 
 from odoo import _, api, fields, models
 
@@ -116,7 +116,7 @@ class Metric(models.Model):
             _logger.warning(values)
             if values:
                 if operation == "avg":
-                    return sum(values)/len(values)
+                    return sum(values) / len(values)
                 elif operation == "sum":
                     return sum(values)
                 elif operation == "count":

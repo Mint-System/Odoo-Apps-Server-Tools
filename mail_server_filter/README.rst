@@ -8,7 +8,7 @@ Mail Server Filter
 
 Filter outgoing and incoming mail server by database name.
 
-For a detailed documentation have a look at https://www.odoo-wiki.org/.
+For a detailed documentation have a look at https://www.odoo-wiki.org/mail-server-filter.html
 
 .. image:: https://raw.githubusercontent.com/Mint-System/Wiki/master/assets/icon-box.png
   :height: 100
