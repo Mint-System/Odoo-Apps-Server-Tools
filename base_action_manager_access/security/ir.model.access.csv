@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+"access_ir_actions_group_erp_manager","ir_actions_group_erp_manager","base.model_ir_actions_actions","base.group_erp_manager",1,1,1,1
+"access_ir_actions_act_window_group_erp_manager","ir_actions_act_window_system","base.model_ir_actions_act_window","base.group_erp_manager",1,1,1,1
+"access_ir_actions_act_window_close_group_erp_manager","ir_actions_act_window_close_group_erp_manager","base.model_ir_actions_act_window_close","base.group_erp_manager",1,1,1,1
+"access_ir_actions_report_group_erp_manager","ir_actions_report_group_erp_manager","base.model_ir_actions_report","base.group_erp_manager",1,1,1,1
+"access_ir_actions_todo_group_erp_manager","ir_actions_todo_group_erp_manager","base.model_ir_actions_todo","base.group_erp_manager",1,1,1,1
+"access_ir_actions_act_window_view_group_erp_manager","ir_actions_act_window_view_group_erp_manager","base.model_ir_actions_act_window_view","base.group_erp_manager",1,1,1,1
+"access_ir_actions_act_url_group_erp_manager","ir_actions_act_url_group_erp_manager","base.model_ir_actions_act_url","base.group_erp_manager",1,1,1,1
+"access_ir_actions_server_group_erp_manager","ir_actions_server_group_erp_manager","base.model_ir_actions_server","base.group_erp_manager",1,1,1,1
+"access_ir_actions_client","ir_actions_client all","base.model_ir_actions_client","base.group_erp_manager",1,1,1,1
+"access_ir_server_object_lines_group_erp_manager","ir_server_object_lines_group_system","base.model_ir_server_object_lines","base.group_erp_manager",1,1,1,1
+"access_base_automation_group_erp_manager",base.automation_group_erp_manager,base_automation.model_base_automation,base.group_erp_manager,1,1,1,1
