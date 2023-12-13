@@ -35,6 +35,7 @@ class IrModelFieldAnonymize(models.Model):
         "ir.model", compute="_compute_model_id", store=True, readonly=False
     )
     field_id = fields.Many2one("ir.model.fields", copy=False)
+    field_type = fields.Selection(related="field_id.ttype")
     anonymize_strategy = fields.Selection(
         [
             ("id", "ID"),
@@ -51,7 +52,7 @@ class IrModelFieldAnonymize(models.Model):
     domain = fields.Char(required=True, default="[]")
     anonymize_value = fields.Char(default="Lorem Ipsum {rec.id}")
     anonymize_random_range = fields.Char(help="Format: start, stop")
-    output_new_value = fields.Boolean()
+    output_new_value = fields.Boolean(string="Output to Server Log")
     is_anonymized = fields.Boolean()
 
     @api.depends("field_id")
@@ -69,6 +70,8 @@ class IrModelFieldAnonymize(models.Model):
             records = self.env[anon.field_id.model].search(domain)
             fieldname = anon.field_id.name
             fieldtype = anon.field_id.ttype
+
+            _logger.warning(_("Anonymize feld '%s' of model '%s'.") % (anon.name, anon.model))
 
             # ID strategy
             if anon.anonymize_strategy == "id":
@@ -105,7 +108,7 @@ class IrModelFieldAnonymize(models.Model):
             # Value strategy
             if anon.anonymize_strategy == "value":
                 for rec in records:
-                    new_value = anon.anonymize_value.format({"id": rec.id})
+                    new_value = anon.anonymize_value
                     new_value = int(new_value) if fieldtype == "integer" else new_value
                     new_value = float(new_value) if fieldtype == "float" else new_value
                     new_value = bool(new_value) if fieldtype == "boolean" else new_value

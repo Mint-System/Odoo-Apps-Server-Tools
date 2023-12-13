@@ -49,7 +49,7 @@
   <record id="field_hr_employee__name" model="ir.model.fields.anonymize">
     <field name="field_id" ref="hr.field_hr_employee__name" />
     <field name="anonymize_strategy">value</field>
-    <field name="anonymize_value">Anonymized User {id}</field>
+    <field name="anonymize_value">Anonymized User</field>
   </record>
   <record id="field_hr_employee__image_1920" model="ir.model.fields.anonymize">
     <field name="field_id" ref="hr.field_hr_employee__image_1920" />
