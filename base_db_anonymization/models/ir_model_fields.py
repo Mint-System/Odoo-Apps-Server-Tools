@@ -71,7 +71,9 @@ class IrModelFieldAnonymize(models.Model):
             fieldname = anon.field_id.name
             fieldtype = anon.field_id.ttype
 
-            _logger.warning(_("Anonymize feld '%s' of model '%s'.") % (anon.name, anon.model))
+            _logger.warning(
+                _("Anonymize feld '%s' of model '%s'.") % (anon.name, anon.model)
+            )
 
             # ID strategy
             if anon.anonymize_strategy == "id":

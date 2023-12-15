@@ -1,0 +1,32 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* base_vat_required_vies
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-15 08:27+0000\n"
+"PO-Revision-Date: 2023-12-15 08:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: base_vat_required_vies
+#: model:ir.model,name:base_vat_required_vies.model_res_partner
+msgid "Contact"
+msgstr "Kontakt"
+
+#. module: base_vat_required_vies
+#. odoo-python
+#: code:addons/base_vat_required_vies/models/res_partner.py:0
+#, python-format
+msgid ""
+"The VAT number [%(wrong_vat)s] for [%(country_code)s] did not pass the VIES check.\n"
+"Note: the expected format is %(expected_format)s"
+msgstr ""
+"Die MwSt.-Nummer [%(wrong_vat)s] für [%(country_code)s] hat die VIES-Validierungsprüfung nicht bestanden.\n"
+"Hinweis: Das erwartete Format ist %(expected_format)s"
