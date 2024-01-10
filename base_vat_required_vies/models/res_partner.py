@@ -12,11 +12,13 @@ class ResPartner(models.Model):
 
     @api.model
     def _run_vat_test(self, vat_number, default_country, partner_is_company=True):
-        res = super()._run_vat_test(vat_number, default_country, partner_is_company=True)
+        res = super()._run_vat_test(
+            vat_number, default_country, partner_is_company=True
+        )
 
         # Return false if vat check failed for eu country.
-        is_eu_country = self.country_id in self.env.ref('base.europe').country_ids
-        vies_check = self._run_vies_test(self.vat, self.country_id)        
+        is_eu_country = self.country_id in self.env.ref("base.europe").country_ids
+        vies_check = self._run_vies_test(self.vat, self.country_id)
         if is_eu_country and vies_check is False:
             return False
         elif isinstance(vies_check, str) and vies_check.upper() != self.country_id.code:
