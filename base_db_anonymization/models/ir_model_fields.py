@@ -50,7 +50,7 @@ class IrModelFieldAnonymize(models.Model):
         "- clear: Clear field content.",
     )
     domain = fields.Char(required=True, default="[]")
-    anonymize_value = fields.Char(default="Lorem Ipsum {rec.id}")
+    anonymize_value = fields.Char(default="Lorem Ipsum")
     anonymize_random_range = fields.Char(help="Format: start, stop")
     output_new_value = fields.Boolean(string="Output to Server Log")
     is_anonymized = fields.Boolean()
