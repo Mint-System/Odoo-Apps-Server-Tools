@@ -38,16 +38,16 @@ class IrModelFieldAnonymize(models.Model):
     field_type = fields.Selection(related="field_id.ttype")
     anonymize_strategy = fields.Selection(
         [
-            ("id", "ID"),
+            ("xml_id", "XML ID"),
             ("value", "Value"),
             ("random", "Random"),
             ("clear", "Clear"),
         ],
         help="Anonymiztion strategy. \n"
-        "- 'id' Concat model name and database id.\n"
-        "- 'value' Enter a value that is applied to all records.\n"
-        "- 'random' Generate random values based on data type.\n"
-        "- 'clear' Clear field content.",
+        "- xml_id: Concat model name and database id.\n"
+        "- value: Enter a value that is applied to all records.\n"
+        "- random: Generate random values based on data type.\n"
+        "- clear: Clear field content.",
     )
     domain = fields.Char(required=True, default="[]")
     anonymize_value = fields.Char(default="Lorem Ipsum {rec.id}")
@@ -76,7 +76,7 @@ class IrModelFieldAnonymize(models.Model):
             )
 
             # ID strategy
-            if anon.anonymize_strategy == "id":
+            if anon.anonymize_strategy == "xml_id":
                 for rec in records:
                     new_value = (
                         anon.field_id.model.replace(".", "_") + "_" + str(rec.id)

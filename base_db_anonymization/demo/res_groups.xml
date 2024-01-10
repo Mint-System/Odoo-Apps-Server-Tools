@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <record model="res.groups" id="base_db_anonymization.can_anonymize_records">
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
+    </record>
+
+</odoo>
