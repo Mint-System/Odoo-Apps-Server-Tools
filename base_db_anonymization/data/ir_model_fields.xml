@@ -87,10 +87,12 @@
   </record>
   <record id="field_hr_employee__gender" model="ir.model.fields.anonymize">
     <field name="field_id" ref="hr.field_hr_employee__gender" />
-    <field name="anonymize_strategy">clear</field>
+    <field name="anonymize_strategy">value</field>
+    <field name="anonymize_value">other</field>
   </record>
   <record id="field_hr_employee__birthday" model="ir.model.fields.anonymize">
     <field name="field_id" ref="hr.field_hr_employee__birthday" />
-    <field name="anonymize_strategy">clear</field>
+    <field name="anonymize_strategy">value</field>
+    <field name="anonymize_value">1970-01-01</field>
   </record>
 </odoo>
