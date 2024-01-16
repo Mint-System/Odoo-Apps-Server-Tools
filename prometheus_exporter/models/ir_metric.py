@@ -3,9 +3,9 @@ import datetime
 import logging
 
 from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
-from odoo.exceptions import ValidationError
 
 
 class Metric(models.Model):
