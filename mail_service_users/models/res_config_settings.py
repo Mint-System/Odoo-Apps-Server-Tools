@@ -2,7 +2,6 @@ from odoo import api, models
 
 
 class ResConfigSettings(models.TransientModel):
-
     _inherit = "res.config.settings"
 
     @api.depends("company_id")

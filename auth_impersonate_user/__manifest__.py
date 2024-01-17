@@ -4,7 +4,7 @@
         Impersonate another users.
     """,
     "author": "Mint System GmbH, Odoo Community Association (OCA)",
-    "website": "https://www.mint-system.ch",
+    "website": "https://github.com/OCA/sale-workflow",
     "category": "Technical",
     "version": "17.0.1.0.0",
     "license": "AGPL-3",

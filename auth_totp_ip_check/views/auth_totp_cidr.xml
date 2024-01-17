@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
   <record id="view_tree" model="ir.ui.view">
@@ -6,8 +6,8 @@
     <field name="model">auth_totp.cidr</field>
     <field name="arch" type="xml">
       <tree editable="bottom">
-        <field name="user_ids" widget="many2many_tags"/>
-        <field name="cidr"/>
+        <field name="user_ids" widget="many2many_tags" />
+        <field name="cidr" />
       </tree>
     </field>
   </record>
@@ -17,8 +17,8 @@
     <field name="model">auth_totp.cidr</field>
     <field name="arch" type="xml">
       <form>
-        <field name="user_ids" widget="many2many_tags"/>
-        <field name="cidr" placeholder="192.168.2.0/24"/>
+        <field name="user_ids" widget="many2many_tags" />
+        <field name="cidr" placeholder="192.168.2.0/24" />
       </form>
     </field>
   </record>
@@ -29,10 +29,12 @@
     <field name="view_mode">tree,form</field>
   </record>
 
-  <menuitem name="Disable TOTP Check"
-    id="menu_ir_auth_totp_cidr"
-    action="ir_auth_totp_cidr_act"
-    parent="base.menu_security"
-    sequence="15" />
+  <menuitem
+        name="Disable TOTP Check"
+        id="menu_ir_auth_totp_cidr"
+        action="ir_auth_totp_cidr_act"
+        parent="base.menu_security"
+        sequence="15"
+    />
 
 </odoo>

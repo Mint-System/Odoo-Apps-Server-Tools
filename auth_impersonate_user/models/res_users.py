@@ -32,5 +32,5 @@ class ResUsers(models.Model):
             return {
                 "type": "ir.actions.act_url",
                 "target": "self",
-                "url": "/web/impersonate?uid={}".format(self.id),
+                "url": f"/web/impersonate?uid={self.id}",
             }
