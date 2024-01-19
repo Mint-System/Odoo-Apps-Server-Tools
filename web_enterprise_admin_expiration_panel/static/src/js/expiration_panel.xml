@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+<t t-name="DatabaseExpirationPanel" owl="1" t-inherit="web_enterprise.DatabaseExpirationPanel" t-inherit-mode="extension">
+    <xpath expr="//div[hasclass('database_expiration_panel')]" position="attributes">
+        <attribute name="t-if">state.displayAlert === true</attribute>
+    </xpath>
+</t>
+
+</templates>
