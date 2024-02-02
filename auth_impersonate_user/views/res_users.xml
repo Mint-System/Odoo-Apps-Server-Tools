@@ -6,8 +6,8 @@
         <field name="inherit_id" ref="base.view_users_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='company_id']" position="after">
-                <field name="can_impersonate_user" invisible="1" />
-                <field name="can_be_impersonated" invisible="1" />
+                <field name="can_impersonate_user" column_invisible="1" />
+                <field name="can_be_impersonated" column_invisible="1" />
                 <button
                     name="impersonate_user"
                     invisible="(can_impersonate_user == False),(can_be_impersonated == False)"
@@ -25,8 +25,8 @@
         <field name="inherit_id" ref="base.view_users_form" />
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <field name="can_impersonate_user" invisible="1" />
-                <field name="can_be_impersonated" invisible="1" />
+                <field name="can_impersonate_user" column_invisible="1" />
+                <field name="can_be_impersonated" column_invisible="1" />
                 <button
                     name="impersonate_user"
                     invisible="(can_impersonate_user == False),(can_be_impersonated == False)"

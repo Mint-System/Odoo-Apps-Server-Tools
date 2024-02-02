@@ -1,0 +1,47 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* auth_impersonate_user
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-01 14:08+0000\n"
+"PO-Revision-Date: 2024-02-01 14:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: auth_impersonate_user
+#: model:ir.model.fields,field_description:auth_impersonate_user.field_res_users__can_be_impersonated
+msgid "Can Be Impersonated"
+msgstr "Kann impersoniert werden"
+
+#. module: auth_impersonate_user
+#: model:ir.model.fields,field_description:auth_impersonate_user.field_res_users__can_impersonate_user
+msgid "Can Impersonate User"
+msgstr "Kann Benutzer impersonieren"
+
+#. module: auth_impersonate_user
+#: model:res.groups,name:auth_impersonate_user.impersonate_user_group
+msgid "Can be impersonated"
+msgstr "Kann impersoniert werden"
+
+#. module: auth_impersonate_user
+#: model:res.groups,name:auth_impersonate_user.impersonate_admin_group
+msgid "Can impersonate user"
+msgstr "Kann Benutzer impersonieren"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_tree
+msgid "Impersonate"
+msgstr "Mit Benutzer einloggen"
+
+#. module: auth_impersonate_user
+#: model:ir.model,name:auth_impersonate_user.model_res_users
+msgid "User"
+msgstr "Benutzer"
