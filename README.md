@@ -20,6 +20,7 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 | [base_db_anonymization](base_db_anonymization) |         Anonymize content of selected database fields. |
 | [base_vat_required_vies](base_vat_required_vies) |         Make VIES VAT check mandatory. |
 | [mail_disable_translation](mail_disable_translation) |         Disable translation for fields of the mail module. |
+| [mail_format_with_parent](mail_format_with_parent) |         Use name of parent for mailing if partner has no name. |
 | [mail_server_filter](mail_server_filter) |         Filter outgoing and incoming mail server by database name. |
 | [mail_service_users](mail_service_users) |         Exclude service users from warranty contract. |
 | [product_disable_translation](product_disable_translation) |         Disable translation for fields of the product module. |
