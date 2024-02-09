@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="can_view_database_list" model="res.groups">
+        <field name="name">Can view database list</field>
+        <field name="category_id" ref="base.module_category_usability" />
+    </record>
+
+</odoo>

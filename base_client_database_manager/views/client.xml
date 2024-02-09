@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">Database Form</field>
+        <field name="model">client.server</field>
+        <field name="arch" type="xml">
+          <tree>
+            <field name="name" />
+            <!-- <xpath expr="//field[@name='order_line']/tree[1]/field[@name='sequence']" -->
+            <!--     position="after"> -->
+            <!--     <field name="position" /> -->
+            <!-- </xpath> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_tree" model="ir.ui.view">
+        <field name="name">Database List</field>
+        <field name="model">client.server</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="open_view_tree" model="ir.actions.act_window">
+        <field name="name">Open Database List</field>
+        <field name="res_model">client.server</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="base_client_database_manager" id="base_client_database_manager.menu_root" />
+
+    <!-- <menuitem name="Documents" id="base_client_database_manager.menu_document" parent="base_client_database_manager.menu_root" /> -->
+    <!-- <menuitem name="Configurations" id="base_client_database_manager.menu_configuration" parent="base_client_database_manager.menu_root" /> -->
+
+    <!-- <menuitem name="Documents" id="base_client_database_manager.menu_document" parent="base_client_database_manager.documents_menu" -->
+    <!--     action="base_client_database_manager.open_view_tree" /> -->
+    <!-- <menuitem name="Server to list" id="base_client_database_manager.menu_server_action" -->
+    <!--     parent="base_client_database_manager.menu_configuration" action="base_client_database_manager.document_server_action" /> -->
+
+
+</odoo>
