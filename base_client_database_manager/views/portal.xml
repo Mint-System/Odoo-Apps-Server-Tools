@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="client_portal_layout" name="Client Portal Layout" inherit_id="web.frontend_layout">
+        <xpath expr="//header" position="replace">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container">
+                        <a class="navbar-brand" href="/my/home">
+                            <img src="/logo.png" alt="Company Logo" height="30"/>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/my/account">My Account</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/web/session/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </xpath>
+    </template>
+
+    <template id="client_portal_homepage" name="Client Portal Homepage">
+        <t t-call="client_portal_layout">
+            <div class="container mt-4 mb-4">
+                <h2>Welcome to Your Client Portal</h2>
+                <p>Here you can manage your databases, view details, and perform updates.</p>
+                <div class="row mt-3">
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Manage Servers</h5>
+                                <p class="card-text">View and manage your servers and their databases.</p>
+                                <a href="/client/server" class="btn btn-primary">Go to Servers</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Support</h5>
+                                <p class="card-text">Need help? Contact our support team for assistance.</p>
+                                <a href="/support/tickets" class="btn btn-primary">Contact Support</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

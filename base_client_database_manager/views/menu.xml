@@ -1,1 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <menuitem id="client_database_manager_menu"
+            name="Client Database Manager"
+            sequence="5"/>
+</odoo>

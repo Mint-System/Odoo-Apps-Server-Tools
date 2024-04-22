@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <record id="can_view_database_list" model="res.groups">
-        <field name="name">Can view database list</field>
-        <field name="category_id" ref="base.module_category_usability" />
+    <record id="group_database_manager" model="res.groups">
+            <field name="name">Database Manager</field>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="category_id" ref="base.module_category_administration"/>
     </record>
-
+    <record model="res.groups" id="group_database_client">
+        <field name="name">Database Client</field>
+        <field name="users" eval="[(4, ref('base.public_user'))]"/>
+        <field name="category_id" ref="base.module_category_administration"/>
+    </record>
 </odoo>

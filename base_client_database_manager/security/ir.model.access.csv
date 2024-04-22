@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_base_client_database_manager_admin,base_client_database_manager,model_client_server,base.group_user,1,1,1,1
+access_client_server,client.server,model_client_server,group_database_manager,1,1,1,1
+access_client_database,client.database,model_client_database,group_database_manager,1,1,1,1
+access_client_server_portal,client.server,model_client_server,group_database_client,1,0,0,0
+access_client_database_portal,client.database,model_client_database,group_database_client,1,0,0,0
