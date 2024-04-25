@@ -1,7 +1,7 @@
 {
     "name": "Mail Tracking Helpdesk Bounce Ticket",
     "summary": """
-        Module summary.
+        When email is bounce, a helpdesk ticket is created.
     """,
     "author": "Mint System GmbH, Odoo Community Association (OCA)",
     "website": "https://www.mint-system.ch",
