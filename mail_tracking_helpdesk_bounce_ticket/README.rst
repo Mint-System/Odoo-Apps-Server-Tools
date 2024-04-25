@@ -6,7 +6,7 @@
 Mail Tracking Helpdesk Bounce Ticket
 ====================================
 
-Module summary.
+When email is bounce, a helpdesk ticket is created.
 
 For a detailed documentation have a look at https://www.odoo-wiki.org/mail-tracking-helpdesk-bounce-ticket.html
 

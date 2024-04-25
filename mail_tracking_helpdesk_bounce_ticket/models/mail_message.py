@@ -1,6 +1,6 @@
 import logging
 
-from odoo import api, fields, models, _
+from odoo import _, api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -29,10 +29,12 @@ class MailMessage(models.Model):
             )
             message.is_bounced_message = has_bounced_trackings
 
-            if message.is_bounced_message and message.message_type == 'comment' and \
-               message.subtype_id.name == 'Discussions':
+            if (
+                message.is_bounced_message
+                and message.message_type == "comment"
+                and message.subtype_id.name == "Discussions"
+            ):
                 self._create_helpdesk_ticket()
-
 
     def _create_helpdesk_ticket(self):
         ticket_vals = {
