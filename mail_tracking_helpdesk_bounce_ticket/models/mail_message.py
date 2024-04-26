@@ -47,4 +47,4 @@ class MailMessage(models.Model):
             "This ticket has been created from %s",
             self._get_html_link(),
         )
-        ticket_id.with_context({"mail_notrack": True}).message_post(body=body)
+        ticket_id.with_context(**{"mail_notrack": True}).message_post(body=body)
