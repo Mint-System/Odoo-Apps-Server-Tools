@@ -37,14 +37,9 @@ class MailMessage(models.Model):
                 self._create_helpdesk_ticket()
 
     def _create_helpdesk_ticket(self):
-        ticket_vals = {
-            "name": _("Mail Delivery Issue"),
-            "description": _("Email with ID %s has been bounced.", self.id),
-        }
-        ticket_id = self.env["helpdesk.ticket"].create(ticket_vals)
-
-        body = _(
-            "This ticket has been created from %s",
-            self._get_html_link(),
-        )
-        ticket_id.with_context(**{"mail_notrack": True}).message_post(body=body)
+           mail_link = self._get_html_link()
+           ticket_vals = {
+               "name": _("Mail Delivery Issue"),
+               "description": _("Email with ID %s has been bounced. This ticket has been created from: %s", self.id, mail_link),
+           }
+           ticket_id = self.env["helpdesk.ticket"].create(ticket_vals)
