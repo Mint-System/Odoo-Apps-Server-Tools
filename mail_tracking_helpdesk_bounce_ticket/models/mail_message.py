@@ -34,12 +34,13 @@ class MailMessage(models.Model):
                 and message.message_type == "comment"
                 and message.subtype_id.name == "Discussions"
             ):
-                self._create_helpdesk_ticket()
+                message._create_helpdesk_ticket()
 
     def _create_helpdesk_ticket(self):
-           mail_link = self._get_html_link()
-           ticket_vals = {
-               "name": _("Mail Delivery Issue"),
-               "description": _("Email with ID %s has been bounced. This ticket has been created from: %s", self.id, mail_link),
-           }
-           ticket_id = self.env["helpdesk.ticket"].create(ticket_vals)
+        self.ensure_one()
+        mail_link = self._get_html_link()
+        ticket_vals = {
+            "name": _("Mail Delivery Issue"),
+            "description": _("Email with ID %s has been bounced. This ticket has been created from: %s", self.id, mail_link),
+        }
+        ticket_id = self.env["helpdesk.ticket"].create(ticket_vals)
