@@ -41,6 +41,11 @@ class MailMessage(models.Model):
         mail_link = self._get_html_link()
         ticket_vals = {
             "name": _("Mail Delivery Issue"),
-            "description": _("Email with ID %s has been bounced. This ticket has been created from: %s", self.id, mail_link),
         }
         ticket_id = self.env["helpdesk.ticket"].create(ticket_vals)
+        message_body = _(
+            "Email with ID %s has been bounced. This ticket has been created from: %s",
+            self.id,
+            mail_link,
+        )
+        ticket_id.message_post(body=message_body, message_type="notification")
