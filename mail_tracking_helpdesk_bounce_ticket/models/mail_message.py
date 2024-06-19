@@ -30,7 +30,7 @@ class MailMessage(models.Model):
                 message.mapped("mail_tracking_ids.state")
             )
             message.is_bounced_message = has_bounced_trackings
-            
+
             if (
                 message.is_bounced_message
                 and message.message_type == "comment"
@@ -40,10 +40,12 @@ class MailMessage(models.Model):
 
     def _create_helpdesk_ticket(self):
         self.ensure_one()
-        ticket_id = self.env["helpdesk.ticket"].create({
-            "name": _("Mail Delivery Issue"),
-            "partner_id": self.partner_ids[0].id if self.partner_ids else False,
-        })
+        ticket_id = self.env["helpdesk.ticket"].create(
+            {
+                "name": _("Mail Delivery Issue"),
+                "partner_id": self.partner_ids[0].id if self.partner_ids else False,
+            }
+        )
         message_body = _(
             "Email with ID %s has been bounced. This ticket has been created from: %s",
             self.id,
