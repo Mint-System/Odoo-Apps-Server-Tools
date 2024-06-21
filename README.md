@@ -26,4 +26,5 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 | [mail_tracking_helpdesk_bounce_ticket](mail_tracking_helpdesk_bounce_ticket) |         When email is bounced create a helpdesk ticket. |
 | [product_disable_translation](product_disable_translation) |         Disable translation for fields of the product module. |
 | [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
+| [url_slug](url_slug) |         Generate slug from record name for web urls. |
 | [web_enterprise_admin_expiration_panel](web_enterprise_admin_expiration_panel) |         Show database expiration panel for Admins only. |
