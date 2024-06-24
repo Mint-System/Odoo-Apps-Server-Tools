@@ -14,9 +14,4 @@
     "auto_install": False,
     "images": ["images/screen.png"],
     "qweb": ["static/src/xml/board.xml"],
-    "external_dependencies": {
-        "python": [
-            "python-slugify",
-        ],
-    },
 }

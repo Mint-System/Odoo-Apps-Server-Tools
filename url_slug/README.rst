@@ -19,7 +19,7 @@ Configuration
   
   class Tag(models.Model):
       _name = "note.note"
-      _inherit = ['mail.thread', 'mail.activity.mixin', 'url_slug.mixin']
+      _inherit = ['mail.thread', 'mail.activity.mixin', 'url.slug.mixin']
       _description = "Note"
       _order = 'sequence, id desc'
 
