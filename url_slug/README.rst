@@ -8,7 +8,7 @@ Url Slug
 
 Generate slug from record name for web urls.
 
-For a detailed documentation have a look at https://www.odoo-wiki.org/base-url-slug.html
+For a detailed documentation have a look at https://www.odoo-wiki.org/url-slug.html
 
 Configuration
 ~~~~~~~~~~~~~
@@ -17,11 +17,18 @@ Configuration
 
 .. code-block:: python
   
-  class Tag(models.Model):
+  class Note(models.Model):
       _name = "note.note"
-      _inherit = ['mail.thread', 'mail.activity.mixin', 'url.slug.mixin']
-      _description = "Note"
-      _order = 'sequence, id desc'
+      _inherit = ['url.slug.mixin']
+
+* Optionally overwrite the compute slug method:
+
+.. code-block:: python
+  
+    @api.depends("title")
+    def _compute_slug(self):
+        for record in self:
+            record.slug = slugify(record.title)
 
 Maintainer
 ~~~~~~~~~~

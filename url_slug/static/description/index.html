@@ -624,17 +624,22 @@ a { text-decoration: none; }
 <section id="url-slug">
 <h2>Url Slug</h2>
 <p>Generate slug from record name for web urls.</p>
-<p>For a detailed documentation have a look at <a class="reference external" href="https://www.odoo-wiki.org/base-url-slug.html">https://www.odoo-wiki.org/base-url-slug.html</a></p>
+<p>For a detailed documentation have a look at <a class="reference external" href="https://www.odoo-wiki.org/url-slug.html">https://www.odoo-wiki.org/url-slug.html</a></p>
 <section id="configuration">
 <h3>Configuration</h3>
 <ul class="simple">
 <li><p>Inherit the slug mixin in your module:</p></li>
 </ul>
-<pre class="code python literal-block"><code><span class="keyword">class</span> <span class="name class">Tag</span><span class="punctuation">(</span><span class="name">models</span><span class="operator">.</span><span class="name">Model</span><span class="punctuation">):</span><span class="whitespace">
+<pre class="code python literal-block"><code><span class="keyword">class</span> <span class="name class">Note</span><span class="punctuation">(</span><span class="name">models</span><span class="operator">.</span><span class="name">Model</span><span class="punctuation">):</span><span class="whitespace">
 </span>    <span class="name">_name</span> <span class="operator">=</span> <span class="literal string double">&quot;note.note&quot;</span><span class="whitespace">
-</span>    <span class="name">_inherit</span> <span class="operator">=</span> <span class="punctuation">[</span><span class="literal string single">'mail.thread'</span><span class="punctuation">,</span> <span class="literal string single">'mail.activity.mixin'</span><span class="punctuation">,</span> <span class="literal string single">'url.slug.mixin'</span><span class="punctuation">]</span><span class="whitespace">
-</span>    <span class="name">_description</span> <span class="operator">=</span> <span class="literal string double">&quot;Note&quot;</span><span class="whitespace">
-</span>    <span class="name">_order</span> <span class="operator">=</span> <span class="literal string single">'sequence, id desc'</span></code></pre>
+</span>    <span class="name">_inherit</span> <span class="operator">=</span> <span class="punctuation">[</span><span class="literal string single">'url.slug.mixin'</span><span class="punctuation">]</span></code></pre>
+<ul class="simple">
+<li><p>Optionally overwrite the compute slug method:</p></li>
+</ul>
+<pre class="code python literal-block"><code><span class="name decorator">&#64;api</span><span class="operator">.</span><span class="name">depends</span><span class="punctuation">(</span><span class="literal string double">&quot;title&quot;</span><span class="punctuation">)</span><span class="whitespace">
+</span><span class="keyword">def</span> <span class="name function">_compute_slug</span><span class="punctuation">(</span><span class="name builtin pseudo">self</span><span class="punctuation">):</span><span class="whitespace">
+</span>    <span class="keyword">for</span> <span class="name">record</span> <span class="operator word">in</span> <span class="name builtin pseudo">self</span><span class="punctuation">:</span><span class="whitespace">
+</span>        <span class="name">record</span><span class="operator">.</span><span class="name">slug</span> <span class="operator">=</span> <span class="name">slugify</span><span class="punctuation">(</span><span class="name">record</span><span class="operator">.</span><span class="name">title</span><span class="punctuation">)</span></code></pre>
 </section>
 <section id="maintainer">
 <h3>Maintainer</h3>
