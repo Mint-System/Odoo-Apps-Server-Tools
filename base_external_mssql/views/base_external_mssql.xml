@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<odoo>
+    <!-- DBSource -->
+    <record model="ir.ui.view" id="view_mssql_tree">
+        <field name="name">base.external.mssql.tree</field>
+        <field name="model">base.external.mssql</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="priority" />
+                <field name="name" />
+                <field name="connection_string" />
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_mssql_form">
+        <field name="name">base.external.mssql.form</field>
+        <field name="model">base.external.mssql</field>
+        <field name="arch" type="xml">
+            <form>
+            <header>
+                    <button name="set_priority" type="object" string="Diese DB nutzen" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="server" />
+                        </group>
+                    </group>
+                    <group col="1">
+                        <group>
+                            <field name="database" />
+                            <field name="username" />
+                            <field name="password" password="True" />
+                        </group>
+                        <group col="1">
+                            <button
+                                name="connection_test"
+                                string="Verbindung testen"
+                                type="object"
+                                icon="fa-refresh"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_mssql">
+        <field name="name">Externe Datenbank-Quellen</field>
+        <field name="res_model">base.external.mssql</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_mssql_tree" />
+    </record>
+    <menuitem
+        name="Ext. Datenbank Quellen"
+        id="menu_mssql"
+        parent="base.next_id_9"
+        action="action_mssql"
+    />
+</odoo>
