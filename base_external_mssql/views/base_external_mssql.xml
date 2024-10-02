@@ -9,7 +9,8 @@
             <tree>
                 <field name="priority" />
                 <field name="name" />
-                <field name="connection_string" />
+                <field name="server" />
+                <field name="database" />
             </tree>
         </field>
     </record>
@@ -19,7 +20,7 @@
         <field name="arch" type="xml">
             <form>
             <header>
-                    <button name="set_priority" type="object" string="Diese DB nutzen" class="btn-primary"/>
+                    <button name="set_priority" type="object" string="Use this DB" class="btn-primary"/>
                 </header>
                 <sheet>
                     <group>
@@ -37,7 +38,7 @@
                         <group col="1">
                             <button
                                 name="connection_test"
-                                string="Verbindung testen"
+                                string="Test connection"
                                 type="object"
                                 icon="fa-refresh"
                             />
@@ -48,13 +49,13 @@
         </field>
     </record>
     <record model="ir.actions.act_window" id="action_mssql">
-        <field name="name">Externe Datenbank-Quellen</field>
+        <field name="name">External Databases</field>
         <field name="res_model">base.external.mssql</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_mssql_tree" />
     </record>
     <menuitem
-        name="Ext. Datenbank Quellen"
+        name="Ext. Databases"
         id="menu_mssql"
         parent="base.next_id_9"
         action="action_mssql"

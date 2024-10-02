@@ -7,18 +7,21 @@ from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
+# this is need otherwise pyodbc will not work correctly
+pyodbc.setDecimalSeparator(".")
+
 
 class BaseExternalMssql(models.Model):
     _name = 'base.external.mssql'
     _description = 'Base External Mssql'
 
-    name = fields.Char("Name der Datenquelle", required=True)
-    server = fields.Char("Datenbank-Server", required=True)
-    database = fields.Char("Datenbank", required=True)
-    username = fields.Char("Datenbank-User", required=True)
-    password = fields.Char("Passwort", required=True)
+    name = fields.Char("Name of Datasource", required=True)
+    server = fields.Char("Datenbase Server", required=True)
+    database = fields.Char("Database Name", required=True)
+    username = fields.Char("Database User", required=True)
+    password = fields.Char("Database Password", required=True)
     connection_string = fields.Text(readonly=True, compute="_compute_connection_string")
-    priority = fields.Boolean(string='Verwenden')
+    priority = fields.Boolean(string='Use this DB')
     
     @api.depends("server", "database", "username", "password")
     def _compute_connection_string(self):
@@ -31,7 +34,7 @@ class BaseExternalMssql(models.Model):
     def connection_open(self):
         """It provides a context manager for the data source."""
         try:
-            connection = pyodbc.connect(self.connection_string)
+            connection = pyodbc.connect(self.connection_string, autocommit=True)
             yield connection
         finally:
             try:
@@ -46,24 +49,19 @@ class BaseExternalMssql(models.Model):
         # import pdb; pdb.set_trace()
         with self.connection_open() as connection:
             cur = connection.cursor()
-            print("#### QUERY:", query)
-            print("#### PARAMS:", params)
             
             cur.execute(query)
             if query_type == 'insert':
                 connection.commit()
                 res = cur.execute('SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY];')
-                print('res: ', res)
                 last_id = res.fetchval()
-                print('last_id:', last_id)
+                return last_id
             elif query_type == 'select':
                 rows = cur.fetchall()
-                print('rows:', rows)
                 return rows
 
             elif query_type == 'select_one':
                 result = cur.fetchval()
-                print('################ result:', result)
                 connection.commit()
                 return result
 
