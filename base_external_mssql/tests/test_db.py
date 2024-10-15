@@ -2,7 +2,7 @@ from unittest import TestCase
 from odoo.tests.common import TransactionCase
 
 import pyodbc
-import pymssql
+
 
 
 #SERVER = 'localhost,1433'
