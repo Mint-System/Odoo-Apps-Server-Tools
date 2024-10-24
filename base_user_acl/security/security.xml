@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="module_category_module_acl" model="ir.module.category">
+        <field name="name">Access-control list</field>
+        <field name="sequence">70</field>
+        <field name="description">Managed extended permissions.</field>
+    </record>
+
+</odoo>
