@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="group_apps_menu" model="res.groups">
+        <field name="name">Apps Menu</field>
+        <field name="category_id" ref="base_user_acl.module_category_module_acl" />
+    </record>
+
+</odoo>
