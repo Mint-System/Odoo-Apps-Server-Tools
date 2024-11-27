@@ -1,0 +1,28 @@
+<odoo>
+    <record id="production" model="server.config.environment">
+        <field name="name">production</field>
+        <field name="key">prod</field>
+        <field name="description">Live production environment</field>
+    </record>
+    <record id="integration" model="server.config.environment">
+        <field name="name">integration</field>
+        <field name="key">int</field>
+        <field name="description">Preproduction environment</field>
+    </record>
+    <record id="testing" model="server.config.environment">
+        <field name="name">testing</field>
+        <field name="key">test</field>
+        <field name="description">Testing and QA</field>
+    </record>
+    <record id="development" model="server.config.environment">
+        <field name="name">development</field>
+        <field name="key">dev</field>
+        <field name="description">Local development</field>
+        <field name="default" eval="True" />
+    </record>
+    <record id="upgrade" model="server.config.environment">
+        <field name="name">upgrade</field>
+        <field name="key">upg</field>
+        <field name="description">Upgrade testing environment</field>
+    </record>
+</odoo>
