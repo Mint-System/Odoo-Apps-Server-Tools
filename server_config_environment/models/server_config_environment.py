@@ -39,7 +39,7 @@ class ServerConfigEnvironment(models.Model):
         """
         Returns the active environment.
         """
-        environment_id = self.search([]).filtered(lambda e: e.is_active)[0]
+        environment_id = self.search([]).filtered(lambda e: e.is_active)[:1]
         if not environment_id:
             environment_id = self.search([("default", "=", True)], limit=1)
         return environment_id
