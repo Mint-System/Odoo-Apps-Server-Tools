@@ -31,4 +31,5 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 | [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
 | [server_config_environment](server_config_environment) |         Define environments for server configurations. |
 | [url_slug](url_slug) |         Generate slug from record name for web urls. |
+| [web_editor_disable_convert_inline](web_editor_disable_convert_inline) |         Disable inline conversion in Odoo editor. |
 | [web_enterprise_admin_expiration_panel](web_enterprise_admin_expiration_panel) |         Show database expiration panel for Admins only. |
