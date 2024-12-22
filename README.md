@@ -22,6 +22,7 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 | [base_user_acl](base_user_acl) |         Base module for ACL modules. |
 | [base_vat_required_vies](base_vat_required_vies) |         Make VIES VAT check mandatory. |
 | [board_user_acl](board_user_acl) |         Restricted access to dashboards app. |
+| [home_background_image](home_background_image) |         Set a background image for the Odoo company. |
 | [mail_disable_translation](mail_disable_translation) |         Disable translation for fields of the mail module. |
 | [mail_format_with_parent](mail_format_with_parent) |         Use name of parent for mailing if partner has no name. |
 | [mail_server_filter](mail_server_filter) |         Filter outgoing and incoming mail server by database name. |
