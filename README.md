@@ -12,10 +12,12 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 
 ## Available modules
 
-| Module                                         | Summary                                                    |
-|------------------------------------------------|------------------------------------------------------------|
-| [auth_impersonate_user](auth_impersonate_user) | Impersonate another users.                                 |
-| [auth_totp_ip_check](auth_totp_ip_check)       | Disable totp for specific ip networks.                     |
-| [mail_server_filter](mail_server_filter)       | Filter outgoing and incoming mail server by database name. |
-| [mail_service_users](mail_service_users)       | Exclude service users from warranty contract.              |
-| [prometheus_exporter](prometheus_exporter)     | Monitor Odoo metrics with Prometheus.                      |
+| Module | Summary |
+| --- | --- |
+| [auth_impersonate_user](auth_impersonate_user) |         Impersonate another users. |
+| [auth_totp_ip_check](auth_totp_ip_check) |         Disable totp for specific ip networks. |
+| [base_external_mssql](base_external_mssql) |     """, |
+| [mail_server_filter](mail_server_filter) |         Filter outgoing and incoming mail server by database name. |
+| [mail_service_users](mail_service_users) |         Exclude service users from warranty contract. |
+| [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
+| [server_config_environment](server_config_environment) |         Define environments for server configurations. |
