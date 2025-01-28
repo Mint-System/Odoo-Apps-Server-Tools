@@ -3,7 +3,7 @@
     "summary": """
         Show the database name on the top right of web page without needing to debug mode.
     """,
-    "author": "Mint System GmbH, Odoo Community Association (OCA)",
+    "author": "Mint System GmbH",
     "website": "https://www.mint-system.ch",
     "license": "AGPL-3",
     "category": "Tools",
