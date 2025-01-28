@@ -15,4 +15,4 @@
     "images": ["images/screen.png"],
     "qweb": ["static/src/xml/board.xml"],
 }
-manifest_required_authors=Mint System GmbH
+

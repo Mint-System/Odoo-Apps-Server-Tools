@@ -20,4 +20,4 @@
     "images": ["images/screen.png"],
     "external_dependencies": {"python": ["prometheus_client"]},
 }
-manifest_required_authors=Mint System GmbH
+

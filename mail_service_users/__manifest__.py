@@ -15,4 +15,4 @@
     "auto_install": False,
     "images": ["images/screen.png"],
 }
-manifest_required_authors=Mint System GmbH
+

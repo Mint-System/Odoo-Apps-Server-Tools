@@ -19,4 +19,4 @@
         ],
     },
 }
-manifest_required_authors=Mint System GmbH
+
