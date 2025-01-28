@@ -3,7 +3,7 @@
     "summary": """
         Define environments for server configurations.
     """,
-    "author": "Mint System GmbH, Odoo Community Association (OCA)",
+    "author": "Mint System GmbH",
     "website": "https://www.mint-system.ch",
     "category": "Technical",
     "version": "16.0.1.0.0",
@@ -20,3 +20,4 @@
     "auto_install": False,
     "images": ["images/screen.png"],
 }
+manifest_required_authors=Mint System GmbH

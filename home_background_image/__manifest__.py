@@ -3,7 +3,7 @@
     "summary": """
         Set a background image for the Odoo company.
     """,
-    "author": "Mint System GmbH, Odoo Community Association (OCA)",
+    "author": "Mint System GmbH",
     "website": "https://www.mint-system.ch",
     "category": "Customizations",
     "version": "16.0.1.0.0",
@@ -19,3 +19,4 @@
         ],
     },
 }
+manifest_required_authors=Mint System GmbH

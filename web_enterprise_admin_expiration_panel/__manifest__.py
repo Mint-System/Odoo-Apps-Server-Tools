@@ -3,7 +3,7 @@
     "summary": """
         Show database expiration panel for Admins only.
     """,
-    "author": "Mint System GmbH, Odoo Community Association (OCA)",
+    "author": "Mint System GmbH",
     "website": "https://www.mint-system.ch",
     "category": "Administration",
     "version": "16.0.1.0.0",
@@ -20,3 +20,4 @@
         ],
     },
 }
+manifest_required_authors=Mint System GmbH

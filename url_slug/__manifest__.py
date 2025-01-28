@@ -3,7 +3,7 @@
     "summary": """
         Generate slug from record name for web urls.
     """,
-    "author": "Mint System GmbH, Odoo Community Association (OCA)",
+    "author": "Mint System GmbH",
     "website": "https://www.mint-system.ch",
     "category": "Hidden",
     "version": "16.0.1.0.0",
@@ -15,3 +15,4 @@
     "images": ["images/screen.png"],
     "qweb": ["static/src/xml/board.xml"],
 }
+manifest_required_authors=Mint System GmbH
