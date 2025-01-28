@@ -3,7 +3,7 @@
     "summary": """
         Disable totp for specific ip networks.
     """,
-    "author": "Mint System GmbH, Odoo Community Association (OCA)",
+    "author": "Mint System GmbH",
     "website": "https://github.com/OCA/sale-workflow",
     "category": "Technical",
     "version": "17.0.1.0.0",

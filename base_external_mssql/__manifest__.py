@@ -3,7 +3,7 @@
     "summary": """
         Module summary.
     """,
-    "author": "Mint System GmbH, Odoo Community Association (OCA)",
+    "author": "Mint System GmbH",
     "website": "https://github.com/OCA/sale-workflow",
     "category": "Tools",
     "version": "17.0.1.0.0",
