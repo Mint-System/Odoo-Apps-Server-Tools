@@ -1,7 +1,7 @@
 {
     "name": "Board User ACL",
     "summary": """
-        Restricted access to dashboards app.
+        Restrict access to dashboards app.
     """,
     "author": "Mint System GmbH",
     "website": "https://www.mint-system.ch",
@@ -15,4 +15,3 @@
     "auto_install": False,
     "images": ["images/screen.png"],
 }
-
