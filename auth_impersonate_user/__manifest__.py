@@ -4,7 +4,7 @@
         Impersonate another users.
     """,
     "author": "Mint System GmbH",
-    "website": "https:/www.mint-system.ch",
+    "website": "https://github.com/OCA/sale-workflow",
     "category": "Technical",
     "version": "18.0.1.0.0",
     "license": "AGPL-3",
