@@ -21,3 +21,4 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 | [mail_service_users](mail_service_users) |         Exclude service users from warranty contract. |
 | [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
 | [server_config_environment](server_config_environment) |         Define environments for server configurations. |
+| [web_font_arial](web_font_arial) |         Add Arial font to font selection. |
