@@ -630,14 +630,14 @@ a { text-decoration: none; }
 <ul class="simple">
 <li><p>Inherit the slug mixin in your module:</p></li>
 </ul>
-<pre class="code python literal-block"><code><span class="keyword">class</span> <span class="name class">Note</span><span class="punctuation">(</span><span class="name">models</span><span class="operator">.</span><span class="name">Model</span><span class="punctuation">):</span><span class="whitespace">
+<pre class="code python literal-block"><code><span class="keyword">class</span><span class="whitespace"> </span><span class="name class">Note</span><span class="punctuation">(</span><span class="name">models</span><span class="operator">.</span><span class="name">Model</span><span class="punctuation">):</span><span class="whitespace">
 </span>    <span class="name">_name</span> <span class="operator">=</span> <span class="literal string double">&quot;note.note&quot;</span><span class="whitespace">
 </span>    <span class="name">_inherit</span> <span class="operator">=</span> <span class="punctuation">[</span><span class="literal string single">'url.slug.mixin'</span><span class="punctuation">]</span></code></pre>
 <ul class="simple">
 <li><p>Optionally overwrite the compute slug method:</p></li>
 </ul>
 <pre class="code python literal-block"><code><span class="name decorator">&#64;api</span><span class="operator">.</span><span class="name">depends</span><span class="punctuation">(</span><span class="literal string double">&quot;title&quot;</span><span class="punctuation">)</span><span class="whitespace">
-</span><span class="keyword">def</span> <span class="name function">_compute_slug</span><span class="punctuation">(</span><span class="name builtin pseudo">self</span><span class="punctuation">):</span><span class="whitespace">
+</span><span class="keyword">def</span><span class="whitespace"> </span><span class="name function">_compute_slug</span><span class="punctuation">(</span><span class="name builtin pseudo">self</span><span class="punctuation">):</span><span class="whitespace">
 </span>    <span class="keyword">for</span> <span class="name">record</span> <span class="operator word">in</span> <span class="name builtin pseudo">self</span><span class="punctuation">:</span><span class="whitespace">
 </span>        <span class="name">record</span><span class="operator">.</span><span class="name">slug</span> <span class="operator">=</span> <span class="name">slugify</span><span class="punctuation">(</span><span class="name">record</span><span class="operator">.</span><span class="name">title</span><span class="punctuation">)</span></code></pre>
 </section>

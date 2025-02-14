@@ -21,7 +21,7 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 | [base_module_user_acl](base_module_user_acl) |         Restricted access to apps app. |
 | [base_user_acl](base_user_acl) |         Base module for ACL modules. |
 | [base_vat_required_vies](base_vat_required_vies) |         Make VIES VAT check mandatory. |
-| [board_user_acl](board_user_acl) |         Restricted access to dashboards app. |
+| [board_user_acl](board_user_acl) |         Restrict access to dashboards app. |
 | [home_background_image](home_background_image) |         Set a background image for the Odoo company. |
 | [mail_disable_translation](mail_disable_translation) |         Disable translation for fields of the mail module. |
 | [mail_format_with_parent](mail_format_with_parent) |         Use name of parent for mailing if partner has no name. |
@@ -34,3 +34,4 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 | [url_slug](url_slug) |         Generate slug from record name for web urls. |
 | [web_editor_disable_convert_inline](web_editor_disable_convert_inline) |         Disable inline conversion in Odoo editor. |
 | [web_enterprise_admin_expiration_panel](web_enterprise_admin_expiration_panel) |         Show database expiration panel for Admins only. |
+| [web_font_arial](web_font_arial) |         Add Arial font to font selection. |

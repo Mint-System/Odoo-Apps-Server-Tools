@@ -15,4 +15,3 @@
     "images": ["images/screen.png"],
     "qweb": ["static/src/xml/board.xml"],
 }
-
