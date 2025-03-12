@@ -13,16 +13,12 @@ class ResUsers(models.Model):
 
     def _compute_can_impersonate_user(self):
         for user in self:
-            user.can_impersonate_user = self.env.user.has_group(
-                "auth_impersonate_user.impersonate_admin_group"
-            )
+            user.can_impersonate_user = self.env.user.has_group("auth_impersonate_user.impersonate_admin_group")
 
     def _compute_can_be_impersonated(self):
         for user in self:
             user.can_be_impersonated = (
-                user.has_group("auth_impersonate_user.impersonate_user_group")
-                if self.env.user != user
-                else False
+                user.has_group("auth_impersonate_user.impersonate_user_group") if self.env.user != user else False
             )
 
     def impersonate_user(self):

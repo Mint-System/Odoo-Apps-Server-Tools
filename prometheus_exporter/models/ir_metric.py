@@ -79,9 +79,7 @@ class Metric(models.Model):
                 (
                     "nextcall",
                     "<=",
-                    (datetime.datetime.now() - datetime.timedelta(days=2)).strftime(
-                        "%Y-%m-%d"
-                    ),
+                    (datetime.datetime.now() - datetime.timedelta(days=2)).strftime("%Y-%m-%d"),
                 ),
                 ("active", "=", True),
             ]
@@ -90,9 +88,7 @@ class Metric(models.Model):
                 (
                     "date",
                     ">=",
-                    (datetime.datetime.now() - datetime.timedelta(days=30)).strftime(
-                        "%Y-%m-%d"
-                    ),
+                    (datetime.datetime.now() - datetime.timedelta(days=30)).strftime("%Y-%m-%d"),
                 )
             ]
         else:

@@ -26,16 +26,11 @@ class Users(models.Model):
         # Get cidrs without users.
         allowed_cidrs += self.env["auth_totp.cidr"].search([("user_ids", "=", False)])
 
-        in_cidr = any(
-            ip_address in cidr
-            for cidr in allowed_cidrs.mapped(lambda r: ipaddress.IPv4Network(r.cidr))
-        )
+        in_cidr = any(ip_address in cidr for cidr in allowed_cidrs.mapped(lambda r: ipaddress.IPv4Network(r.cidr)))
 
         # Check if user is allowed to login without totp
         prevent_login_without_2fa = ast.literal_eval(
-            self.env["ir.config_parameter"]
-            .sudo()
-            .get_param("auth_totp.prevent_login_without_2fa", "False")
+            self.env["ir.config_parameter"].sudo().get_param("auth_totp.prevent_login_without_2fa", "False")
         )
         if prevent_login_without_2fa and not self.totp_enabled and not in_cidr:
             return "/web/login"
