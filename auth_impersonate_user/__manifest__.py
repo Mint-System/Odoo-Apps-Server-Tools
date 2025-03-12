@@ -4,7 +4,7 @@
         Impersonate another users.
     """,
     "author": "Mint System GmbH",
-    "website": "https://github.com/Mint-System/template",
+    "website": "https://www.mint-system.ch/",
     "category": "Technical",
     "version": "16.0.1.1.1",
     "license": "AGPL-3",

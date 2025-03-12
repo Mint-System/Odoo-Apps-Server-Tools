@@ -4,7 +4,7 @@
         Show database expiration panel for Admins only.
     """,
     "author": "Mint System GmbH",
-    "website": "https://github.com/Mint-System/template",
+    "website": "https://www.mint-system.ch/",
     "category": "Administration",
     "version": "16.0.1.0.0",
     "license": "OPL-1",

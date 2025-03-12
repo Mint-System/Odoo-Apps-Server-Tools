@@ -4,7 +4,7 @@
         Monitor Odoo metrics with Prometheus.
     """,
     "author": "Mint System GmbH",
-    "website": "https://github.com/Mint-System/template",
+    "website": "https://www.mint-system.ch/",
     "category": "Technical",
     "version": "16.0.1.3.0",
     "license": "AGPL-3",

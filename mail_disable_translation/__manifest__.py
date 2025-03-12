@@ -4,7 +4,7 @@
         Disable translation for fields of the mail module.
     """,
     "author": "Mint System GmbH",
-    "website": "https://github.com/Mint-System/template",
+    "website": "https://www.mint-system.ch/",
     "category": "Tools",
     "version": "16.0.1.0.0",
     "license": "AGPL-3",
