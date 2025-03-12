@@ -4,7 +4,7 @@
         Module summary.
     """,
     "author": "Mint System GmbH",
-    "website": "https://github.com/OCA/sale-workflow",
+    "website": "https://www.mint-system.ch/",
     "category": "Tools",
     "version": "17.0.1.0.0",
     "license": "AGPL-3",

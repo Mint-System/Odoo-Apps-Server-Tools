@@ -24,9 +24,7 @@ class BaseExternalMssql(models.Model):
     password = fields.Char("Database Password", required=True)
     connection_string = fields.Text(readonly=True, compute="_compute_connection_string")
     priority = fields.Boolean(string="Use this DB")
-    driver = fields.Selection(
-        [("pyodbc", "pyodbc"), ("pymssql", "pymssql")], default="pymssql"
-    )
+    driver = fields.Selection([("pyodbc", "pyodbc"), ("pymssql", "pymssql")], default="pymssql")
 
     @api.depends("server", "database", "username", "password")
     def _compute_connection_string(self):
@@ -99,10 +97,7 @@ class BaseExternalMssql(models.Model):
             with self.connection_open():
                 pass
         except Exception as e:
-            raise ValidationError(
-                "Connection test failed:\n"
-                "Here is what we got instead:\n%s" % tools.ustr(e)
-            )
+            raise ValidationError("Connection test failed:\n" "Here is what we got instead:\n%s" % tools.ustr(e))
         else:
             rows = self.execute("select", "SELECT @@VERSION", as_dict=False)
             message = "Datenbbank-Version:\n"

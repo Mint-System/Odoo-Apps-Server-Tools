@@ -15,16 +15,12 @@ class ServerConfigEnvironment(models.Model):
     key = fields.Char(required=True)
     description = fields.Char(required=True)
     is_active = fields.Boolean(compute="_compute_is_active")
-    default = fields.Boolean(
-        help="Fallback to this environment if config['environment'] is not set."
-    )
+    default = fields.Boolean(help="Fallback to this environment if config['environment'] is not set.")
 
     def _compute_is_active(self):
         for rec in self:
             config_environment = config.get("environment")
-            if config_environment and (
-                rec.name == config_environment or rec.key == config_environment
-            ):
+            if config_environment and (rec.name == config_environment or rec.key == config_environment):
                 rec.is_active = True
             else:
                 rec.is_active = False
