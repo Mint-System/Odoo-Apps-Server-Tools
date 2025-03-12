@@ -12,9 +12,7 @@ class ResPartner(models.Model):
 
     @api.model
     def _run_vat_test(self, vat_number, default_country, partner_is_company=True):
-        res = super()._run_vat_test(
-            vat_number, default_country, partner_is_company=True
-        )
+        res = super()._run_vat_test(vat_number, default_country, partner_is_company=True)
 
         # Return false if vat check failed for eu country.
         is_eu_country = self.country_id in self.env.ref("base.europe").country_ids
@@ -34,7 +32,5 @@ class ResPartner(models.Model):
             wrong_vat=wrong_vat,
             record_label=record_label,
             country_code=country_code.upper(),
-            expected_format=_ref_vat.get(
-                country_code, "'CC##' (CC=Country Code, ##=VAT Number)"
-            ),
+            expected_format=_ref_vat.get(country_code, "'CC##' (CC=Country Code, ##=VAT Number)"),
         )

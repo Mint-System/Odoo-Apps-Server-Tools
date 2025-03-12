@@ -4,7 +4,7 @@
         Anonymize content of selected database fields.
     """,
     "author": "Mint System GmbH",
-    "website": "https://www.mint-system.ch",
+    "website": "https://github.com/Mint-System/template",
     "category": "Administration",
     "version": "16.0.1.4.0",
     "license": "AGPL-3",

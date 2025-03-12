@@ -8,7 +8,13 @@
             <xpath expr="//field[@name='company_id']" position="after">
                 <field name="can_impersonate_user" invisible="1" />
                 <field name="can_be_impersonated" invisible="1" />
-                <button name="impersonate_user" attrs="{'invisible': ['|',('can_impersonate_user', '=', False),('can_be_impersonated', '=', False)]}" string="Impersonate" type="object" class="oe_highlight" />
+                <button
+                    name="impersonate_user"
+                    attrs="{'invisible': ['|',('can_impersonate_user', '=', False),('can_be_impersonated', '=', False)]}"
+                    string="Impersonate"
+                    type="object"
+                    class="oe_highlight"
+                />
             </xpath>
         </field>
     </record>
@@ -21,7 +27,12 @@
             <xpath expr="//header" position="inside">
                 <field name="can_impersonate_user" invisible="1" />
                 <field name="can_be_impersonated" invisible="1" />
-                <button name="impersonate_user" attrs="{'invisible': ['|',('can_impersonate_user', '=', False),('can_be_impersonated', '=', False)]}" string="Impersonate" type="object" />
+                <button
+                    name="impersonate_user"
+                    attrs="{'invisible': ['|',('can_impersonate_user', '=', False),('can_be_impersonated', '=', False)]}"
+                    string="Impersonate"
+                    type="object"
+                />
             </xpath>
         </field>
     </record>

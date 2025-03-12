@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
     <record id="server_config_environment_form_view" model="ir.ui.view">
-        <field name="name">server_config_environment.server_config_environment_form_view</field>
+        <field
+            name="name"
+        >server_config_environment.server_config_environment_form_view</field>
         <field name="model">server.config.environment</field>
         <field name="arch" type="xml">
             <form>
@@ -10,12 +12,17 @@
                 </header>
                 <sheet>
                     <field name="is_active" invisible="1" />
-                    <widget name="web_ribbon" title="Active" bg_color="bg-success" attrs="{'invisible': [('is_active', '=', False)]}"/>
+                    <widget
+                        name="web_ribbon"
+                        title="Active"
+                        bg_color="bg-success"
+                        attrs="{'invisible': [('is_active', '=', False)]}"
+                    />
                     <div class="oe_button_box" name="button_box">
                     </div>
                     <div class="oe_title">
                         <h1>
-                            <field name="name"/>
+                            <field name="name" />
                         </h1>
                         <group>
                             <field name="description" />
@@ -29,7 +36,9 @@
     </record>
 
     <record id="server_config_environment_tree_view" model="ir.ui.view">
-        <field name="name">server_config_environment.server_config_environment_tree_view</field>
+        <field
+            name="name"
+        >server_config_environment.server_config_environment_tree_view</field>
         <field name="model">server.config.environment</field>
         <field name="arch" type="xml">
             <tree>
@@ -43,7 +52,9 @@
     </record>
 
     <record id="server_config_environment_search_view" model="ir.ui.view">
-        <field name="name">server_config_environment.server_config_environment_search_view</field>
+        <field
+            name="name"
+        >server_config_environment.server_config_environment_search_view</field>
         <field name="model">server.config.environment</field>
         <field name="arch" type="xml">
             <search>

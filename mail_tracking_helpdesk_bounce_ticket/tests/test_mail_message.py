@@ -16,9 +16,7 @@ class TestMailMessage(common.TransactionCase):
         self.message.message_type = "comment"
         self.message.subtype_id.name = "Discussions"
         self.message._create_helpdesk_ticket()
-        ticket = self.env["helpdesk.ticket"].search(
-            [("name", "=", "Mail Delivery Issue")]
-        )
+        ticket = self.env["helpdesk.ticket"].search([("name", "=", "Mail Delivery Issue")])
         self.assertTrue(ticket)
         message_body = _(
             "Email with ID %s has been bounced. This ticket has been created from: %s",

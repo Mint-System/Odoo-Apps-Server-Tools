@@ -1,14 +1,16 @@
+
+
 [MASTER]
 load-plugins=pylint_odoo
 score=n
 
 [ODOOLINT]
-readme_template_url="https://github.com/OCA/maintainer-tools/blob/master/template/module/README.rst"
-manifest_required_authors=Mint System GmbH
-manifest_required_keys=license
-manifest_deprecated_keys=description,active
-license_allowed=AGPL-3,GPL-2,GPL-2 or any later version,GPL-3,GPL-3 or any later version,LGPL-3
-valid_odoo_versions=16.0
+readme-template-url="https://github.com/OCA/maintainer-tools/blob/master/template/module/README.rst"
+manifest-required-authors=Mint System GmbH
+manifest-required-keys=license
+manifest-deprecated-keys=description,active
+license-allowed=AGPL-3,GPL-2,GPL-2 or any later version,GPL-3,GPL-3 or any later version,LGPL-3
+valid-odoo-versions=16.0
 
 [MESSAGES CONTROL]
 disable=all
@@ -32,7 +34,6 @@ enable=anomalous-backslash-in-string,
     duplicate-id-csv,
     duplicate-key,
     duplicate-xml-fields,
-    duplicate-xml-record-id,
     eval-referenced,
     eval-used,
     incoherent-interpreter-exec-perm,
@@ -80,7 +81,6 @@ enable=anomalous-backslash-in-string,
     manifest-maintainers-list,
     missing-newline-extrafiles,
     missing-readme,
-    missing-return,
     odoo-addons-relative-import,
     old-api7-method-defined,
     po-msgstr-variables,

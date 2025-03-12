@@ -4,7 +4,7 @@
         Define environments for server configurations.
     """,
     "author": "Mint System GmbH",
-    "website": "https://www.mint-system.ch",
+    "website": "https://github.com/Mint-System/template",
     "category": "Technical",
     "version": "16.0.1.0.0",
     "license": "AGPL-3",
