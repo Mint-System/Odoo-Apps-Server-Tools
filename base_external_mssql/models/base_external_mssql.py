@@ -71,6 +71,7 @@ class BaseExternalMssql(models.Model):
                 cur = connection.cursor()
             else:
                 cur = connection.cursor(as_dict=True)
+            _logger.info("Executing query: %s" % (query,))
             cur.execute(query)
             if query_type == "insert":
                 # connection.commit() not needed for pymssql
@@ -90,6 +91,8 @@ class BaseExternalMssql(models.Model):
                 _logger.info("RESULT FROM SELECT ONE: %s" % (result,))
                 connection.commit()
                 return result
+
+            
 
     def connection_test(self):
         """It tests the connection
