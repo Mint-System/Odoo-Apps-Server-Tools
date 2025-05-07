@@ -92,8 +92,6 @@ class BaseExternalMssql(models.Model):
                 connection.commit()
                 return result
 
-            
-
     def connection_test(self):
         """It tests the connection
 
