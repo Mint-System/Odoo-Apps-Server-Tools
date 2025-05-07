@@ -65,21 +65,41 @@ class BaseExternalMssql(models.Model):
     def connection_close(self, connection):
         return connection.close()
 
+    def _get_db_driver(self):
+        return self.driver
+
     def execute(self, query_type, query, *params, as_dict=True):
         with self.connection_open() as connection:
-            if not as_dict:
-                cur = connection.cursor()
+            cursor_factory = connection.cursor if not as_dict else lambda: connection.cursor(as_dict=True)
+            cur = cursor_factory()
+
+            _logger.info("Executing query: %s | Params: %s", query, params)
+            # if not as_dict:
+            #     cur = connection.cursor()
+            # else:
+            #     cur = connection.cursor(as_dict=True)
+            # _logger.info("Executing query: %s" % (query,))
+            # cur.execute(query)
+            if params:
+                cur.execute(query, *params)
             else:
-                cur = connection.cursor(as_dict=True)
-            _logger.info("Executing query: %s" % (query,))
-            cur.execute(query)
+                cur.execute(query)
+
             if query_type == "insert":
                 # connection.commit() not needed for pymssql
                 # this works for pyodbc:
                 # res = cur.execute('SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY];')
                 # last_id = res.fetchval() # this works for pyodbc
-                last_id = cur.lastrowid
-                return last_id
+                connection.commit()
+
+                try:
+                    return cur.lastrowid
+                except AttributeError:
+                    # Fallback for drivers that don’t support lastrowid
+                    cur.execute("SELECT SCOPE_IDENTITY();")
+                    return cur.fetchone()[0]
+                # last_id = cur.lastrowid
+                # return last_id
             elif query_type == "select":
                 rows = cur.fetchall()
                 return rows
@@ -91,6 +111,15 @@ class BaseExternalMssql(models.Model):
                 _logger.info("RESULT FROM SELECT ONE: %s" % (result,))
                 connection.commit()
                 return result
+
+            elif query_type in ("update", "delete"):
+                connection.commit()
+                return cur.rowcount  # Optional: return number of affected rows
+
+            else:
+                raise ValueError(f"Unsupported query_type: {query_type}")
+
+            
 
     def connection_test(self):
         """It tests the connection
