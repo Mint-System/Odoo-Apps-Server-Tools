@@ -73,7 +73,7 @@ class BaseExternalMssql(models.Model):
             cursor_factory = connection.cursor if not as_dict else lambda: connection.cursor(as_dict=True)
             cur = cursor_factory()
 
-            _logger.info("Executing query: %s | Params: %s", query, params)
+            #_logger.info("Executing query: %s | Params: %s", query, params)
             # if not as_dict:
             #     cur = connection.cursor()
             # else:
