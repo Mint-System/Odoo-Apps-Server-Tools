@@ -82,8 +82,10 @@ class BaseExternalMssql(models.Model):
             # cur.execute(query)
             if params:
                 cur.execute(query, *params)
+                _logger.info("Executing query: %s | Params: %s", query, params)
             else:
                 cur.execute(query)
+                _logger.info("Executing query: %s", query)
 
             if query_type == "insert":
                 # connection.commit() not needed for pymssql
@@ -108,7 +110,7 @@ class BaseExternalMssql(models.Model):
                 # result = cur.fetchval()
                 # result = cur.fetchone()[0]
                 result = cur.fetchone()
-                _logger.info("RESULT FROM SELECT ONE: %s" % (result,))
+                #_logger.info("RESULT FROM SELECT ONE: %s" % (result,))
                 connection.commit()
                 return result
 
