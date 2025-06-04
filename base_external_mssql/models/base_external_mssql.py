@@ -25,6 +25,17 @@ class BaseExternalMssql(models.Model):
     connection_string = fields.Text(readonly=True, compute="_compute_connection_string")
     priority = fields.Boolean(string="Use this DB")
     driver = fields.Selection([("pyodbc", "pyodbc"), ("pymssql", "pymssql")], default="pymssql")
+    database_type = fields.Selection(
+        [("interface", "Interface"), ("proddb", "Prod DB")], default="interface"
+    )
+    use_button_is_visible = fields.Boolean(
+        string="Use DB Button Visibility", compute="_compute_use_button_is_visible", store=False
+    )
+
+    @api.depends("priority", "database_type")
+    def _compute_use_button_is_visible(self):
+        for record in self:
+            record.use_button_is_visible = not record.priority and record.database_type == "interface"
 
     @api.depends("server", "database", "username", "password")
     def _compute_connection_string(self):

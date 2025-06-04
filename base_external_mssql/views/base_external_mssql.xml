@@ -12,6 +12,7 @@
                 <field name="server" />
                 <field name="database" />
                 <field name="driver" />
+                <field name="database_type" />
             </list>
         </field>
     </record>
@@ -26,6 +27,7 @@
                         type="object"
                         string="Use this DB"
                         class="btn-primary"
+                        invisible="not use_button_is_visible"/>
                     />
                 </header>
                 <sheet>
@@ -34,6 +36,7 @@
                             <field name="name" />
                             <field name="server" />
                             <field name="driver" />
+                            <field name="database_type" />
                         </group>
                     </group>
                     <group col="1">
