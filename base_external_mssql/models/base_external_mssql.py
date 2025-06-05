@@ -93,10 +93,10 @@ class BaseExternalMssql(models.Model):
             # cur.execute(query)
             if params:
                 cur.execute(query, *params)
-                _logger.info("Executing query: %s | Params: %s", query, params)
+                # _logger.info("Executing query: %s | Params: %s", query, params)
             else:
                 cur.execute(query)
-                _logger.info("Executing query: %s", query)
+                # _logger.info("Executing query: %s", query)
 
             if query_type == "insert":
                 # connection.commit() not needed for pymssql
