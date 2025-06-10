@@ -1,6 +1,6 @@
 import logging
 
-from prometheus_client import CollectorRegistry, Counter, Gauge, generate_latest
+from prometheus_client import CollectorRegistry, Counter, Gauge, generate_latest, CONTENT_TYPE_LATEST
 
 from odoo import http
 from odoo.http import request
@@ -23,4 +23,7 @@ class PrometheusController(http.Controller):
             if metric.metric_type == "counter":
                 c = Counter(metric.name, metric.description, registry=registry)
                 c.inc(metric._get_value())
-        return generate_latest(registry)
+        return request.make_response(
+            generate_latest(registry),
+            headers=[("Content-Type", CONTENT_TYPE_LATEST)],
+        )
