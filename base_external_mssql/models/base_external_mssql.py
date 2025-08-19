@@ -25,9 +25,7 @@ class BaseExternalMssql(models.Model):
     connection_string = fields.Text(readonly=True, compute="_compute_connection_string")
     priority = fields.Boolean(string="Use this DB")
     driver = fields.Selection([("pyodbc", "pyodbc"), ("pymssql", "pymssql")], default="pymssql")
-    database_type = fields.Selection(
-        [("interface", "Interface"), ("proddb", "Prod DB")], default="interface"
-    )
+    database_type = fields.Selection([("interface", "Interface"), ("proddb", "Prod DB")], default="interface")
     use_button_is_visible = fields.Boolean(
         string="Use DB Button Visibility", compute="_compute_use_button_is_visible", store=False
     )
@@ -84,7 +82,7 @@ class BaseExternalMssql(models.Model):
             cursor_factory = connection.cursor if not as_dict else lambda: connection.cursor(as_dict=True)
             cur = cursor_factory()
 
-            #_logger.info("Executing query: %s | Params: %s", query, params)
+            # _logger.info("Executing query: %s | Params: %s", query, params)
             # if not as_dict:
             #     cur = connection.cursor()
             # else:
@@ -121,7 +119,7 @@ class BaseExternalMssql(models.Model):
                 # result = cur.fetchval()
                 # result = cur.fetchone()[0]
                 result = cur.fetchone()
-                #_logger.info("RESULT FROM SELECT ONE: %s" % (result,))
+                # _logger.info("RESULT FROM SELECT ONE: %s" % (result,))
                 connection.commit()
                 return result
 
@@ -131,8 +129,6 @@ class BaseExternalMssql(models.Model):
 
             else:
                 raise ValueError(f"Unsupported query_type: {query_type}")
-
-            
 
     def connection_test(self):
         """It tests the connection

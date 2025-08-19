@@ -1,0 +1,5 @@
+- Open user demo
+- Grant administration access rights
+- Login as demo user
+- Enable technical mode
+- Ensure user can access actions
