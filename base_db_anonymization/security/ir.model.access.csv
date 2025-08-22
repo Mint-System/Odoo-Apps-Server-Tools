@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+base_db_anonymization.access_ir_model_fields_anonymize,access_ir_model_fields_anonymize,base_db_anonymization.model_ir_model_fields_anonymize,base.group_system,1,1,1,1

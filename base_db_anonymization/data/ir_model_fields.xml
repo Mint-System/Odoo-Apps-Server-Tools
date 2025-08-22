@@ -1,0 +1,101 @@
+<odoo>
+    <record id="field_res_users__login" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="base.field_res_users__login" />
+        <field name="anonymize_strategy">xml_id</field>
+        <field name="output_new_value" eval="True" />
+    </record>
+    <record id="field_res_users__image_1920" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="base.field_res_users__image_1920" />
+        <field name="anonymize_strategy">clear</field>
+    </record>
+    <record id="field_res_users__name" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="base.field_res_users__name" />
+        <field name="anonymize_strategy">value</field>
+        <field name="anonymize_value">Anonymized User</field>
+    </record>
+
+    <record id="field_res_partner__name" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="base.field_res_partner__name" />
+        <field name="anonymize_strategy">value</field>
+        <field
+            name="domain"
+        >['|',('type','=','private'),('user_ids', '!=', False)]</field>
+        <field name="anonymize_value">Anonymized User</field>
+    </record>
+    <record id="field_res_partner__email" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="base.field_res_partner__email" />
+        <field name="anonymize_strategy">value</field>
+        <field
+            name="domain"
+        >['|',('type','=','private'),('user_ids', '!=', False)]</field>
+        <field name="anonymize_value">mail@example.com</field>
+    </record>
+    <record id="field_res_partner__street" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="base.field_res_partner__street" />
+        <field name="anonymize_strategy">random</field>
+        <field
+            name="domain"
+        >['|',('type','=','private'),('user_ids', '!=', False)]</field>
+        <field name="anonymize_random_range">0, 100</field>
+    </record>
+    <record id="field_res_partner__phone" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="base.field_res_partner__phone" />
+        <field name="anonymize_strategy">random</field>
+        <field
+            name="domain"
+        >['|',('type','=','private'),('user_ids', '!=', False)]</field>
+        <field name="anonymize_random_range">10000, 99999</field>
+    </record>
+    <record id="field_res_partner__mobile" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="base.field_res_partner__mobile" />
+        <field name="anonymize_strategy">random</field>
+        <field name="domain">[('user_ids', '!=', False)]</field>
+        <field name="anonymize_random_range">10000, 99999</field>
+    </record>
+
+    <record id="field_hr_employee__name" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="hr.field_hr_employee__name" />
+        <field name="anonymize_strategy">value</field>
+        <field name="anonymize_value">Anonymized User</field>
+    </record>
+    <record id="field_hr_employee__job_title" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="hr.field_hr_employee__job_title" />
+        <field name="anonymize_strategy">clear</field>
+    </record>
+    <record id="field_hr_employee__image_1920" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="hr.field_hr_employee__image_1920" />
+        <field name="anonymize_strategy">clear</field>
+    </record>
+    <record id="field_hr_employee__work_phone" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="hr.field_hr_employee__work_phone" />
+        <field name="anonymize_strategy">random</field>
+        <field name="anonymize_random_range">10000, 99999</field>
+    </record>
+    <record id="field_hr_employee__job_id" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="hr.field_hr_employee__job_id" />
+        <field name="anonymize_strategy">clear</field>
+    </record>
+    <record id="field_hr_employee__work_email" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="hr.field_hr_employee__work_email" />
+        <field name="anonymize_strategy">value</field>
+        <field name="anonymize_value">mail@example.com</field>
+    </record>
+    <record id="field_hr_employee__category_ids" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="hr.field_hr_employee__category_ids" />
+        <field name="anonymize_strategy">clear</field>
+    </record>
+    <record id="field_hr_employee__department_id" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="hr.field_hr_employee__department_id" />
+        <field name="anonymize_strategy">clear</field>
+    </record>
+    <record id="field_hr_employee__gender" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="hr.field_hr_employee__gender" />
+        <field name="anonymize_strategy">value</field>
+        <field name="anonymize_value">other</field>
+    </record>
+    <record id="field_hr_employee__birthday" model="ir.model.fields.anonymize">
+        <field name="field_id" ref="hr.field_hr_employee__birthday" />
+        <field name="anonymize_strategy">value</field>
+        <field name="anonymize_value">1970-01-01</field>
+    </record>
+</odoo>
