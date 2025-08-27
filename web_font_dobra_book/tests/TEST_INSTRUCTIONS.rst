@@ -1,0 +1,2 @@
+- Goto *Settings > General Settings > Companies > Configure Company Layout*.
+- Choose Font *Dobra Book*.
