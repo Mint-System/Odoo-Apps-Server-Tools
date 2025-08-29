@@ -1,0 +1,1 @@
+- In a QWeb template use `t-options="{'widget': 'decimal_align', 'decimals': 1}"` to format floats and align at decimal point (e.g. in table).
