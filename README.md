@@ -21,6 +21,7 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 | [base_external_mssql](base_external_mssql) |         Establish connection to external mssql database. |
 | [base_module_user_acl](base_module_user_acl) |         Restricted access to apps app. |
 | [base_user_acl](base_user_acl) |         Base module for ACL modules. |
+| [mail_format_with_parent](mail_format_with_parent) |         Use name of parent for mailing if partner has no name. |
 | [mail_server_filter](mail_server_filter) |         Filter outgoing and incoming mail server by database name. |
 | [mail_service_users](mail_service_users) |         Exclude service users from warranty contract. |
 | [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
