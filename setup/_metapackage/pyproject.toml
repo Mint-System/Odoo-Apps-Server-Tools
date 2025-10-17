@@ -1,0 +1,20 @@
+[project]
+name = "odoo-apps-server-tools"
+version = "18.0.20251017.0"
+dependencies = [
+    "odoo-addon-auth_impersonate_user==18.0.*",
+    "odoo-addon-auth_totp_ip_check==18.0.*",
+    "odoo-addon-base_action_manager_access==18.0.*",
+    "odoo-addon-base_db_anonymization==18.0.*",
+    "odoo-addon-base_external_mssql==18.0.*",
+    "odoo-addon-mail_format_with_parent==18.0.*",
+    "odoo-addon-mail_server_filter==18.0.*",
+    "odoo-addon-mail_service_users==18.0.*",
+    "odoo-addon-prometheus_exporter==18.0.*",
+    "odoo-addon-server_config_environment==18.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 18.0",
+]
