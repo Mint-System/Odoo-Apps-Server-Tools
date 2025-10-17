@@ -1,15 +1,13 @@
 # Odoo Apps: Server Tools
 
-[![.github/workflows/build-and-publish.yaml](https://github.com/Mint-System/Odoo-Apps-Server-Tools/actions/workflows/build-and-publish.yaml/badge.svg)](https://github.com/Mint-System/Odoo-Apps-Server-Tools/actions/workflows/build-and-publish.yaml)
-
-Collection of Odoo apps to improve technical features.
+Odoo modules extending the `server` module.
 
 ## Usage
 
 Clone this repo into the Odoo addons directory.
 
 ```bash
-git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_tools
+git clone git@github.com:Mint-System/Odoo-Apps-Server-Tools.git ./addons/server_tools
 ```
 
 ## Available modules

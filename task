@@ -19,8 +19,6 @@ function help-table() {
     printf "$COLUMN" "build" "" "Build python packages with whool."
     printf "$COLUMN" "publish" "" "Publish python packages to PyPi."
     printf "$COLUMN" "docs" "" "Update index.html."
-    printf "$COLUMN" "source" "" "Source the Python virtual env."
-    printf "$COLUMN" "version" "" "Show version of required tools."
 }
 
 function help() {
@@ -37,15 +35,19 @@ function help() {
     echo
 }
 
-function version() {
-    uv --version
-}
+if [ -d "$HOME/taskfile.build/bin" ]; then
+    for file in "$HOME/taskfile.build/bin/"*; do
+        if [ -f "$file" ]; then
+            source "$file"
+        fi
+    done
+fi
 
 function install() {
-    echo "Setup venv and install OCA maintainer tools"
+    echo "Setup venv and install python dependencies"
     uv venv env
     source env/bin/activate
-    uv pip install git+https://github.com/OCA/maintainer-tools
+    uv pip install pre-commit git+https://github.com/OCA/maintainer-tools
 }
 
 function lint() {
@@ -53,6 +55,13 @@ function lint() {
 
     echo "Run pre-commit"
     pre-commit run --all-files --show-diff-on-failure --color=always
+}
+
+function install() {
+    echo "Setup venv and install OCA maintainer tools"
+    uv venv env
+    source env/bin/activate
+    uv pip install git+https://github.com/OCA/maintainer-tools
 }
 
 build() {
