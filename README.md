@@ -26,3 +26,4 @@ git clone git@github.com:Mint-System/Odoo-Apps-Server-Tools.git ./addons/server_
 | [mail_service_users](mail_service_users) |         Exclude service users from warranty contract. |
 | [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
 | [server_config_environment](server_config_environment) |         Define environments for server configurations. |
+| [url_slug](url_slug) |         Generate slug from record name for web urls. |
