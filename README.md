@@ -1,5 +1,7 @@
 # Odoo Apps: Server Tools
 
+[![.github/workflows/build-and-publish.yaml](https://github.com/Mint-System/Odoo-Apps-Server-Tools/actions/workflows/build-and-publish.yaml/badge.svg)](https://github.com/Mint-System/Odoo-Apps-Server-Tools/actions/workflows/build-and-publish.yaml)
+
 Collection of Odoo apps to improve technical features.
 
 ## Usage
