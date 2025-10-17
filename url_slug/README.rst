@@ -11,26 +11,6 @@ Generate slug from record name for web urls.
 
 For a detailed documentation have a look at https://www.odoo-wiki.org/url-slug.html
 
-Configuration
-~~~~~~~~~~~~~
-
-* Inherit the slug mixin in your module:
-
-.. code-block:: python
-  
-  class Note(models.Model):
-      _name = "note.note"
-      _inherit = ['url.slug.mixin']
-
-* Optionally overwrite the compute slug method:
-
-.. code-block:: python
-  
-    @api.depends("title")
-    def _compute_slug(self):
-        for record in self:
-            record.slug = slugify(record.title)
-
 Maintainer
 ~~~~~~~~~~
 
