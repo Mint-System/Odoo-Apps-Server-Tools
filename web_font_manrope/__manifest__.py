@@ -16,10 +16,10 @@
     "images": ["images/screen.png"],
     "assets": {
         "web.assets_backend": [
-            "web_font_manrope/static/css/fonts.scss",
+            "web_font_manrope/static/scss/fonts.scss",
         ],
         "web.report_assets_common": [
-            "web_font_manrope/static/css/fonts.scss",
+            "web_font_manrope/static/scss/fonts.scss",
         ],
     },
 }
