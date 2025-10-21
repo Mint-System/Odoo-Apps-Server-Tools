@@ -1,8 +1,8 @@
+import logging
+
 from markupsafe import Markup
 
 from odoo import models
-
-import logging
 
 _logger = logging.getLogger(__name__)
 
@@ -28,6 +28,6 @@ class DecimalAlign(models.AbstractModel):
             f'<span style="min-width:3em;display:inline-block;text-align:right;">{int_part}</span>'
             f'<span style="width:0.5em;display:inline-block;text-align:center;">.</span>'
             f'<span style="min-width:2em;display:inline-block;text-align:left;">{frac_part}</span>'
-            f'</span>'
+            f"</span>"
         )
         return Markup(html)
