@@ -1,4 +1,5 @@
 import logging
+
 import slugify
 
 from odoo import api, fields, models
