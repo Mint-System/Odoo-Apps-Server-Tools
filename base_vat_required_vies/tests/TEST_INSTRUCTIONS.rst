@@ -1,0 +1,3 @@
+- Setup contact "Belgien" with country "Belgien"
+- Enter the "BE0477472701" vat
+- Ensure a error message is shown

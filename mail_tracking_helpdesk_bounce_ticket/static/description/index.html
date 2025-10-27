@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="generator" content="Docutils 0.21.2: https://docutils.sourceforge.io/" />
+<meta name="generator" content="Docutils 0.22.2: https://docutils.sourceforge.io/" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>README.rst</title>
 <style type="text/css">
@@ -10,7 +10,7 @@
 /* Minimal style sheet for the HTML output of Docutils.                    */
 /*                                                                         */
 /* :Author: Günter Milde, based on html4css1.css by David Goodger          */
-/* :Id: $Id: minimal.css 9545 2024-02-17 10:37:56Z milde $                                                               */
+/* :Id: $Id: minimal.css 10018 2025-03-06 16:19:15Z milde $                                                               */
 /* :Copyright: © 2015, 2021 Günter Milde.                                  */
 /* :License: Released under the terms of the `2-Clause BSD license`_,      */
 /*    in short:                                                            */
@@ -78,10 +78,9 @@ span.problematic {
 /* Lists */
 
 /* compact and simple lists: no margin between items */
-.simple  li, .simple  ul, .simple  ol,
-.compact li, .compact ul, .compact ol,
-.simple  > li p, dl.simple  > dd,
-.compact > li p, dl.compact > dd {
+.simple  li, .simple  ul, .simple  ol, .simple  > li p,
+.compact li, .compact ul, .compact ol, .compact > li p,
+dl.simple  > dd, dl.compact > dd, dl.docinfo > dd {
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -150,7 +149,7 @@ dl.option-list > dd > *:first-child
 /* Bibliographic Fields (docinfo) */
 dl.docinfo pre.address {
   font: inherit;
-  margin: 0.5em 0;
+  margin: 0;
 }
 dl.docinfo > dd.authors > p { margin: 0; }
 
@@ -244,10 +243,11 @@ table.align-left, table.align-center, table.align-right {
 div.line-block { display: block; }
 div.line-block div.line-block, pre { margin-left: 2em; }
 
-/* Code line numbers: dropped when copying text from the page */
+/* Code line numbers: don't copy with drag-and-drop */
 pre.code .ln { display: none; }
 pre.code code:before {
-  content: attr(data-lineno); /* …, none) fallback not supported by any browser */
+  content: attr(data-lineno);
+  font-size: small;
   color: gray;
 }
 
@@ -299,7 +299,12 @@ img, svg, header, footer, main, aside, nav, section, figure, video, details {
 }
 svg { width: auto; height: auto; }  /* enable scaling of SVG images */
 /* inline images */
-p img, p svg, p video { display: inline; }
+
+p img, p svg, p video,
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img,
+h1 svg, h2 svg, h3 svg, h4 svg, h5 svg, h6 svg {
+  display: inline;
+}
 
 </style>
 <style type="text/css">
@@ -308,7 +313,7 @@ p img, p svg, p video { display: inline; }
 /* Rules for easy reading and pre-defined style variants.                  */
 /*                                                                         */
 /* :Author: Günter Milde, based on html4css1.css by David Goodger          */
-/* :Id: $Id: plain.css 9615 2024-04-06 13:28:15Z milde $                                                               */
+/* :Id: $Id: plain.css 10079 2025-04-10 12:01:48Z milde $                                                               */
 /* :Copyright: © 2015 Günter Milde.                                        */
 /* :License: Released under the terms of the `2-Clause BSD license`_,      */
 /*    in short:                                                            */
@@ -463,8 +468,7 @@ pre.math, pre.code {
 
 /* Block Quotes and Topics */
 bockquote { margin: 1em 2em; }
-blockquote p.attribution,
-.topic p.attribution {
+blockquote p.attribution {
   text-align: right;
   margin-left: 20%;
 }
