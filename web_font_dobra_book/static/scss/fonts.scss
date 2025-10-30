@@ -1,13 +1,12 @@
 @font-face {
-    font-family: 'Dobra_Book';
-    src: url('/web_font_dobra_book/static/fonts/Dobra_Book.eot');
-    src: url('/web_font_dobra_book/static/fonts/Dobra_Book.eot?#iefix') format('embedded-opentype'),
-         url('/web_font_dobra_book/static/fonts/Dobra_Book.woff2') format('woff2'),
-         url('/web_font_dobra_book/static/fonts/Dobra_Book.woff') format('woff'),
-         url('/web_font_dobra_book/static/fonts/Dobra_Book.ttf') format('truetype');
+    font-family: "Dobra-Book";
+    src: url("/web_font_dobra_book/static/fonts/Dobra-Book.eot");
+    src: url("/web_font_dobra_book/static/fonts/Dobra-Book.eot?#iefix")
+            format("embedded-opentype"),
+        url("/web_font_dobra_book/static/fonts/Dobra-Book.woff2") format("woff2"),
+        url("/web_font_dobra_book/static/fonts/Dobra-Book.woff") format("woff"),
+        url("/web_font_dobra_book/static/fonts/Dobra-Book.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
-
-

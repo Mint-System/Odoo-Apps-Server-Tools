@@ -8,4 +8,4 @@ _logger = logging.getLogger(__name__)
 class Company(models.Model):
     _inherit = "res.company"
 
-    font = fields.Selection(selection_add=[("Dobra_Book", "Dobra Book")])
+    font = fields.Selection(selection_add=[("Dobra-Book", "Dobra Book")])
