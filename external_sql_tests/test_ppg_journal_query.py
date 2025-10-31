@@ -18,7 +18,8 @@ def mssql_conn():
     conn.close()
 
 
-# columns in PPG Journal "STATUS","Belegnummer","Artikelid","Charge","Seriennummer","Menge","Richtung","Komplett","BzId", "Suchbegriff", "Row_Create_Time"
+# columns in PPG Journal "STATUS","Belegnummer","Artikelid","Charge","Seriennummer","Menge",
+# "Richtung","Komplett","BzId", "Suchbegriff", "Row_Create_Time"
 
 test_cases = [
     (
@@ -235,7 +236,8 @@ def test_ppg_journal_aggregation(mssql_conn, desc, test_rows):
         #             MAX(Komplett) AS MaxKomplett
         #         FROM PPG_Journal
         #         {condition1}
-        #         GROUP BY BzId, Belegnummer, Seriennummer, Charge, Suchbegriff, Richtung, Row_Create_Time, Row_Update_Time
+        #         GROUP BY BzId, Belegnummer, Seriennummer, Charge, Suchbegriff, Richtung,
+        #           Row_Create_Time, Row_Update_Time
         #     )
         #     SELECT c.BzId,
         #         c.Belegnummer,

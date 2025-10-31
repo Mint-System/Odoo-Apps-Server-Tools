@@ -2,9 +2,9 @@ import datetime
 import logging
 
 from odoo import api, models
+from odoo.tools import misc
 
 _logger = logging.getLogger(__name__)
-from odoo.tools import misc
 
 
 class PublisherWarrantyContract(models.AbstractModel):

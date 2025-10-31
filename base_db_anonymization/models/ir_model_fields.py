@@ -16,7 +16,7 @@ class IrModelField(models.Model):
     def _compute_anonymize_id(self):
         anonymize_ids = self.env["ir.model.fields.anonymize"].search([])
         for field in self:
-            anonymize_id = anonymize_ids.filtered(lambda a: a.field_id.id == field.id)[:1]
+            anonymize_id = anonymize_ids.filtered(lambda a, fid=field.id: a.field_id.id == fid)[:1]
             field.anonymize_id = anonymize_id.id if anonymize_ids else False
 
 
