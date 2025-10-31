@@ -1,0 +1,32 @@
+[project]
+name = "odoo-apps-server-tools"
+version = "16.0.20251031.1"
+dependencies = [
+    "odoo-addon-auth_impersonate_user>=16.0dev,<16.1dev",
+    "odoo-addon-auth_totp_ip_check>=16.0dev,<16.1dev",
+    "odoo-addon-base_action_manager_access>=16.0dev,<16.1dev",
+    "odoo-addon-base_db_anonymization>=16.0dev,<16.1dev",
+    "odoo-addon-base_module_user_acl>=16.0dev,<16.1dev",
+    "odoo-addon-base_user_acl>=16.0dev,<16.1dev",
+    "odoo-addon-base_vat_required_vies>=16.0dev,<16.1dev",
+    "odoo-addon-float_align_at_decimal>=16.0dev,<16.1dev",
+    "odoo-addon-home_background_image>=16.0dev,<16.1dev",
+    "odoo-addon-mail_disable_translation>=16.0dev,<16.1dev",
+    "odoo-addon-mail_format_with_parent>=16.0dev,<16.1dev",
+    "odoo-addon-mail_server_filter>=16.0dev,<16.1dev",
+    "odoo-addon-mail_service_users>=16.0dev,<16.1dev",
+    "odoo-addon-mail_tracking_helpdesk_bounce_ticket>=16.0dev,<16.1dev",
+    "odoo-addon-product_disable_translation>=16.0dev,<16.1dev",
+    "odoo-addon-prometheus_exporter>=16.0dev,<16.1dev",
+    "odoo-addon-server_config_environment>=16.0dev,<16.1dev",
+    "odoo-addon-url_slug>=16.0dev,<16.1dev",
+    "odoo-addon-web_editor_disable_convert_inline>=16.0dev,<16.1dev",
+    "odoo-addon-web_enterprise_admin_expiration_panel>=16.0dev,<16.1dev",
+    "odoo-addon-web_font_arial>=16.0dev,<16.1dev",
+    "odoo-addon-web_font_manrope>=16.0dev,<16.1dev",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 16.0",
+]
