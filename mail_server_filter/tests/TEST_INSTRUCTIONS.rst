@@ -1,0 +1,9 @@
+- Setup mail server
+- Open outgoing mail server
+- Enter database filter equal to the database name
+- Open a contact and send a mail
+- Check if mail is sent
+- Open outgoing mail server
+- Enter database filter to "prod"
+- Open a contact and send a mail
+- Check that mail is not sent

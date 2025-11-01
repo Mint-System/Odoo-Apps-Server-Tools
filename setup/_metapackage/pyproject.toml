@@ -1,0 +1,11 @@
+[project]
+name = "odoo-apps-server-tools"
+version = "19.0.20251101.1"
+dependencies = [
+    "odoo-addon-mail_server_filter==19.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 19.0",
+]
