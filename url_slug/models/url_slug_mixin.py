@@ -1,7 +1,5 @@
 import logging
 
-import slugify
-
 from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
@@ -16,4 +14,4 @@ class UrlSlugMixin(models.AbstractModel):
     @api.depends("name")
     def _compute_slug(self):
         for record in self:
-            record.slug = slugify(record.name)
+            record.slug = _slugify(record.name)
