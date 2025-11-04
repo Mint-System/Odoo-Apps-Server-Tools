@@ -8,7 +8,12 @@
     "license": "AGPL-3",
     "category": "Technical Settings",
     "version": "15.0.1.0.0",
-    "depends": ["base", "auth_oauth",],
-    "data": ["views/auth_oauth.xml",],
+    "depends": [
+        "base",
+        "auth_oauth",
+    ],
+    "data": [
+        "views/auth_oauth.xml",
+    ],
     "images": ["images/screen.png"],
 }

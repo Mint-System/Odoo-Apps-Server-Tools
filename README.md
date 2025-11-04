@@ -1,13 +1,13 @@
 # Odoo Apps: Server Tools
 
-Collection of Odoo apps to improve technical features.
+Odoo modules extending the `server` module.
 
 ## Usage
 
-Clone module into Odoo addon directory.
+Clone this repo into the Odoo addons directory.
 
 ```bash
-git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_tools
+git clone git@github.com:Mint-System/Odoo-Apps-Server-Tools.git ./addons/server_tools
 ```
 
 ## Available modules
@@ -20,6 +20,7 @@ git clone git@github.com:mint-system/odoo-apps-server-tools.git ./addons/server_
 | [base_recursion_limit](base_recursion_limit) |         Set python recursion limit. |
 | [board_users](board_users) |         See all dashboards of each user. |
 | [home_background_image](home_background_image) |         Set a background image for the Odoo company. |
+| [ir_attachment_edit](ir_attachment_edit) |         Make resource model and id edtiable for attachments. |
 | [mail_server_filter](mail_server_filter) |         Filter outgoing and incoming mail server by database name. |
 | [mail_service_users](mail_service_users) |         Exclude service users from warranty contract. |
 | [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |

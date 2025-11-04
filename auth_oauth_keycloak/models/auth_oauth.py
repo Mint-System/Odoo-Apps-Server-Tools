@@ -1,7 +1,7 @@
 from odoo import fields, models
 
 
-class AuthOAuthProvider(models.Model): 
-    _inherit = 'auth.oauth.provider' 
+class AuthOAuthProvider(models.Model):
+    _inherit = "auth.oauth.provider"
 
     x_keycloak = fields.Boolean()

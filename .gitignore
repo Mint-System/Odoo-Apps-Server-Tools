@@ -4,3 +4,4 @@ default.vim
 *.swp
 .~lock*
 *.pyc
+tmp
