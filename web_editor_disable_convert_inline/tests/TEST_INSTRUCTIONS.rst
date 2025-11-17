@@ -1,0 +1,6 @@
+- Setup Odoo with two languages
+- Create mail template "test" for "res.partner"
+- Enter `<p style="margin: 0px; padding: 0px; font-size: 12px;">test</p>` as content and translation
+- Open preview and select languages
+- Close preview and open translation
+- Check that html markup was not changed

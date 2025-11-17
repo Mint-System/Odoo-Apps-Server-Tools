@@ -1,0 +1,1 @@
+Disable inline conversion in Odoo editor.
