@@ -1,9 +1,9 @@
 import datetime
 import logging
-from ast import literal_eval
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.tools.safe_eval import safe_eval
 
 _logger = logging.getLogger(__name__)
 
@@ -72,41 +72,25 @@ class Metric(models.Model):
             if not str.islower(rec.name):
                 raise ValidationError(_("Metric name must be lower case."))
 
-    def _get_default_domain(self):
-        if self.name == "odoo_cron_jobs_not_triggered":
-            domain = [
-                "&",
-                (
-                    "nextcall",
-                    "<=",
-                    (datetime.datetime.now() - datetime.timedelta(days=2)).strftime("%Y-%m-%d"),
-                ),
-                ("active", "=", True),
-            ]
-        elif self.name == "odoo_pending_mails":
-            domain = [
-                (
-                    "date",
-                    ">=",
-                    (datetime.datetime.now() - datetime.timedelta(days=30)).strftime("%Y-%m-%d"),
-                )
-            ]
-        else:
-            domain = literal_eval(self.domain)
+    def _get_evaluated_domain(self):
+        date_30_days_ago = self.env.context.get("date_30_days_ago")
+        if not date_30_days_ago:
+            date_30_days_ago = (fields.Datetime.now() - datetime.timedelta(days=30)).strftime("%Y-%m-%d")
+        domain = safe_eval(self.domain, {"date_30_days_ago": date_30_days_ago})
         return domain
 
     def _get_model_count(self):
         """Count model records."""
         self.ensure_one()
         related_model = self.env[self.model]
-        domain = self._get_default_domain()
+        domain = self._get_evaluated_domain()
         return related_model.search_count(domain)
 
     def _get_field_value(self):
         """Run operation for selected field."""
         self.ensure_one()
         related_model = self.env[self.model]
-        domain = self._get_default_domain()
+        domain = self._get_evaluated_domain()
         operation = self.operation
         if self.field_id:
             records = related_model.search(domain)
