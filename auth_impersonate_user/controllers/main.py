@@ -42,7 +42,7 @@ class ImpersonateHome(Home):
             request.session.login = request.session.impersonator_login
             del request.session["impersonator_uid"]
             del request.session["impersonator_login"]
-            request.env["res.users"].clear_caches()
+            request.env.registry.clear_cache()
             request.session.session_token = security.compute_session_token(request.session, request.env)
 
             return request.redirect(self._login_redirect(request.session.uid))
