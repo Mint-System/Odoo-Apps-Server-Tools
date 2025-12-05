@@ -1,9 +1,8 @@
-import datetime
 import logging
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
-from odoo.tools.safe_eval import safe_eval
+from odoo.tools.safe_eval import safe_eval, datetime
 
 _logger = logging.getLogger(__name__)
 
@@ -76,7 +75,7 @@ class Metric(models.Model):
         date_30_days_ago = self.env.context.get("date_30_days_ago")
         if not date_30_days_ago:
             date_30_days_ago = (fields.Datetime.now() - datetime.timedelta(days=30)).strftime("%Y-%m-%d")
-        domain = safe_eval(self.domain, {"date_30_days_ago": date_30_days_ago})
+        domain = safe_eval(self.domain, {"datetime": datetime, "date_30_days_ago": date_30_days_ago})
         return domain
 
     def _get_model_count(self):
