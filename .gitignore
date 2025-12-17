@@ -87,5 +87,5 @@ docs/_build/
 # OCA rules
 !static/lib/
 
-# taskfile
+# Odoo Build
 tmp

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Extend the base view form to add update button -->
+    <record id="view_view_form_inherit" model="ir.ui.view">
+        <field name="name">ir.ui.view.form.inherit.snippet_manager</field>
+        <field name="model">ir.ui.view</field>
+        <field name="inherit_id" ref="base.view_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='arch_db']" position="before">
+                <header>
+                    <button
+                        name="update_from_source"
+                        string="Update from Source"
+                        type="object"
+                        class="btn-primary"
+                        help="Fetch the latest view definition from the configured source URL"
+                    />
+                </header>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Define the action for batch update -->
+    <record id="action_update_from_source" model="ir.actions.server">
+        <field name="name">Update from Source</field>
+        <field name="model_id" ref="base.model_ir_ui_view" />
+        <field name="binding_model_id" ref="base.model_ir_ui_view" />
+        <field name="state">code</field>
+        <field name="code">records.update_from_source()</field>
+        <field name="binding_type">action</field>
+    </record>
+</odoo>

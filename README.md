@@ -26,4 +26,7 @@ git clone git@github.com:Mint-System/Odoo-Apps-Server-Tools.git ./addons/server_
 | [mail_service_users](mail_service_users) |         Exclude service users from warranty contract. |
 | [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
 | [server_config_environment](server_config_environment) |         Define environments for server configurations. |
+| [snippet_manager](snippet_manager) |         Install and upate inherited view edits. |
 | [url_slug](url_slug) |         Generate slug from record name for web urls. |
+| [web_editor_disable_convert_inline](web_editor_disable_convert_inline) |         Disable inline conversion in Odoo editor. |
+| [web_font_manrope](web_font_manrope) |         Add Manrope font to selection. |

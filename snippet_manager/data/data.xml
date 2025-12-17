@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright <YEAR> <COPYRIGHT HOLDER>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- System parameter for snippet manager source URL -->
+    <record id="config_param_snippet_source_url" model="ir.config_parameter">
+        <field name="key">snippet_manager.source_url</field>
+        <field name="value">https://odoo.build/snippets/</field>
+    </record>
+</odoo>
