@@ -7,7 +7,7 @@
             <xpath expr="//field[@name='company_id']" position="after">
                 <button
                     name="impersonate_user"
-                    invisible="(can_impersonate_user == False),(can_be_impersonated == False)"
+                    invisible="not can_be_impersonated or not can_impersonate_user"
                     string="Impersonate"
                     type="object"
                     class="oe_highlight"
@@ -24,7 +24,7 @@
             <xpath expr="//header" position="inside">
                 <button
                     name="impersonate_user"
-                    invisible="(can_impersonate_user == False),(can_be_impersonated == False)"
+                    invisible="not can_be_impersonated or not can_impersonate_user"
                     string="Impersonate"
                     type="object"
                 />
