@@ -1,0 +1,1 @@
+Exclude service users from warranty contract.

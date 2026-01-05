@@ -15,3 +15,4 @@ git clone git@github.com:Mint-System/Odoo-Apps-Server-Tools.git ./addons/server_
 | Module | Summary |
 | --- | --- |
 | [mail_server_filter](mail_server_filter) |         Filter outgoing and incoming mail server by database name. |
+| [mail_service_users](mail_service_users) |         Exclude service users from warranty contract. |
