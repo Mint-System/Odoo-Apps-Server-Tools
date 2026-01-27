@@ -1,0 +1,4 @@
+- Open "Azure Interior" contact
+- Set email to "Azure.Interior24@example.com"
+- Send an email via chatter
+- Check if the email adress has been turned into lower case
