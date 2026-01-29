@@ -1,6 +1,7 @@
 import logging
 
 from odoo import models, tools
+from odoo.tools.mail import email_split_and_format
 
 _logger = logging.getLogger(__name__)
 
@@ -39,6 +40,6 @@ class MailMail(models.Model):
                         )
                     ]
             else:
-                email_to = tools.email_split_and_format(rec.email_to)
+                email_to = email_split_and_format(rec.email_to)
             rec["email_to"] = email_to
         return results
