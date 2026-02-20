@@ -6,7 +6,7 @@ _logger = logging.getLogger(__name__)
 
 
 class FetchmailServer(models.Model):
-    _inherit = ["fetchmail.server"]
+    _inherit = "fetchmail.server"
 
     database_filter = fields.Char()
 

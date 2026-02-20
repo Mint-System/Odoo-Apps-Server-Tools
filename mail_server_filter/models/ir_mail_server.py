@@ -6,7 +6,7 @@ _logger = logging.getLogger(__name__)
 
 
 class IrMailServer(models.Model):
-    _inherit = ["ir.mail_server"]
+    _inherit = "ir.mail_server"
 
     database_filter = fields.Char()
 
