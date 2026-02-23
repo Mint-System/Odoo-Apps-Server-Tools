@@ -40,6 +40,6 @@ class MailMail(models.Model):
                         )
                     ]
             else:
-                email_to = email_split_and_format(rec.email_to)
+                email_to = email_split_and_format(rec.get("email_to") or "")
             rec["email_to"] = email_to
         return results
