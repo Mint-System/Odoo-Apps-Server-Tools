@@ -10,11 +10,6 @@ Monitor Odoo metrics with Prometheus.
 
 For a detailed documentation have a look at https://www.odoo-wiki.org/prometheus-exporter.html
 
-.. image:: https://raw.githubusercontent.com/Mint-System/Wiki/master/assets/icon-box.png
-  :height: 100
-  :width: 100
-  :alt: Icon
-
 Configuration
 ~~~~~~~~~~~~~
 
@@ -23,7 +18,7 @@ Configuration
 Maintainer
 ==========
 
-.. image:: https://raw.githubusercontent.com/Mint-System/Wiki/master/assets/mint-system-logo.png
+.. image:: https://raw.githubusercontent.com/Mint-System/Wiki/main/attachments/mint-system-logo.png
   :target: https://www.mint-system.ch
 
 This module is maintained by Mint System GmbH.
