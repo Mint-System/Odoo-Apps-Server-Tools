@@ -1,0 +1,4 @@
+- Show the users
+- Click "Login with user" on demo user
+- Check if you are logged in as demo user
+- Click logout and and check if you are back being the admin user
