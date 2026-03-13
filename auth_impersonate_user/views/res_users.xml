@@ -5,13 +5,6 @@
         <field name="inherit_id" ref="base.view_users_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='role']" position="after">
-                <!-- <button
-                    name="impersonate_user"
-                    invisible="not can_be_impersonated or not can_impersonate_user"
-                    string="Impersonate"
-                    type="object"
-                    class="oe_highlight"
-                />  -->
                 <button
                     name="impersonate_user"
                     string="Impersonate"

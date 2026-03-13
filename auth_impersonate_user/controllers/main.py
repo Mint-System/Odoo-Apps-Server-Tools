@@ -22,7 +22,7 @@ class ImpersonateHome(Home):
 
             # Set new session info
             uid = request.session.uid = int(request.params["uid"])
-            request.env['res.users']._invalidate_cache()
+            request.env["res.users"]._invalidate_cache()
             request.session.session_token = security.compute_session_token(request.session, request.env)
 
         return request.redirect(self._login_redirect(uid))
@@ -30,22 +30,20 @@ class ImpersonateHome(Home):
     @http.route("/web/session/logout", type="http", auth="none")
     def logout(self, redirect="/web"):
         # Exit impersonation first
-        if request.session.impersonator_uid:
+        if request.session.get("impersonator_uid"):
             _logger.info(
                 "User <%s> exits impersonation of user <%s>.",
-                request.session.impersonator_uid,
+                request.session.get("impersonator_uid"),
                 request.session.uid,
             )
 
             # Restore session info
-            request.session.uid = request.session.impersonator_uid
-            request.session.login = request.session.impersonator_login
+            request.session.uid = request.session.get("impersonator_uid")
+            request.session.login = request.session.get("impersonator_login")
             del request.session["impersonator_uid"]
             del request.session["impersonator_login"]
             request.env.registry.clear_cache()
             request.session.session_token = security.compute_session_token(request.session, request.env)
-
             return request.redirect(self._login_redirect(request.session.uid))
-
         request.session.logout(keep_db=True)
         return request.redirect(redirect, 303)

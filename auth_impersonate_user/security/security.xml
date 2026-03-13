@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="ir_module_category_impersonate" model="ir.module.category">
         <field name="name">Impersonation Rights</field>
         <field name="sequence">50</field>
@@ -8,27 +7,39 @@
 
     <record id="groups_privilege_impersonation" model="res.groups.privilege">
         <field name="name">Impersonation</field>
-        <field name="category_id"
-           ref="auth_impersonate_user.ir_module_category_impersonate"/>
+        <field
+            name="category_id"
+            ref="auth_impersonate_user.ir_module_category_impersonate"
+        />
         <field name="sequence">90</field>
     </record>
 
     <record id="impersonate_user_group" model="res.groups">
         <field name="name">Can be impersonated</field>
-        <field name="privilege_id"
-               ref="auth_impersonate_user.groups_privilege_impersonation"/>
+        <field
+            name="privilege_id"
+            ref="auth_impersonate_user.groups_privilege_impersonation"
+        />
     </record>
 
     <record id="impersonate_admin_group" model="res.groups">
         <field name="name">Can impersonate user</field>
-        <field name="privilege_id"
-               ref="auth_impersonate_user.groups_privilege_impersonation"/>
+        <field
+            name="privilege_id"
+            ref="auth_impersonate_user.groups_privilege_impersonation"
+        />
     </record>
     <record id="base.user_root" model="res.users">
-        <field name="group_ids" eval="[(4, ref('auth_impersonate_user.impersonate_admin_group'))]"/>
+        <field
+            name="group_ids"
+            eval="[(4, ref('auth_impersonate_user.impersonate_admin_group'))]"
+        />
     </record>
 
     <record id="base.user_admin" model="res.users">
-        <field name="group_ids" eval="[(4, ref('auth_impersonate_user.impersonate_admin_group'))]"/>
+        <field
+            name="group_ids"
+            eval="[(4, ref('auth_impersonate_user.impersonate_admin_group'))]"
+        />
     </record>
 </odoo>

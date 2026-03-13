@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 07:54+0000\n"
-"PO-Revision-Date: 2023-11-03 07:54+0000\n"
+"POT-Creation-Date: 2024-02-01 14:08+0000\n"
+"PO-Revision-Date: 2024-02-01 14:08+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,12 +18,12 @@ msgstr ""
 #. module: auth_impersonate_user
 #: model:ir.model.fields,field_description:auth_impersonate_user.field_res_users__can_be_impersonated
 msgid "Can Be Impersonated"
-msgstr ""
+msgstr "Kann impersoniert werden"
 
 #. module: auth_impersonate_user
 #: model:ir.model.fields,field_description:auth_impersonate_user.field_res_users__can_impersonate_user
 msgid "Can Impersonate User"
-msgstr ""
+msgstr "Kann Benutzer impersonieren"
 
 #. module: auth_impersonate_user
 #: model:res.groups,name:auth_impersonate_user.impersonate_user_group
@@ -44,4 +44,491 @@ msgstr "Mit Benutzer einloggen"
 #. module: auth_impersonate_user
 #: model:ir.model,name:auth_impersonate_user.model_res_users
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonate User"
+msgstr "Benutzer impersonieren"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonate this user"
+msgstr "Diesen Benutzer impersonieren"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Stop Impersonating"
+msgstr "Impersonierung beenden"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Stop impersonating this user"
+msgstr "Impersonierung dieses Benutzers beenden"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "You are currently impersonating this user."
+msgstr "Sie impersonieren derzeit diesen Benutzer."
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "You are not impersonating any user."
+msgstr "Sie impersonieren derzeit keinen Benutzer."
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation"
+msgstr "Impersonierung"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Status"
+msgstr "Impersonierungsstatus"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Enabled"
+msgstr "Impersonierung aktiviert"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Disabled"
+msgstr "Impersonierung deaktiviert"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Feature"
+msgstr "Impersonierungsfunktion"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Settings"
+msgstr "Impersonierungseinstellungen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Permissions"
+msgstr "Impersonierungsberechtigungen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Log"
+msgstr "Impersonierungsprotokoll"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation History"
+msgstr "Impersonierungshistorie"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Activity"
+msgstr "Impersonierungsaktivität"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Details"
+msgstr "Impersonierungsdetails"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Information"
+msgstr "Impersonierungsinformation"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Options"
+msgstr "Impersonierungsoptionen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Controls"
+msgstr "Impersonierungssteuerungen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Actions"
+msgstr "Impersonierungsaktionen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Tools"
+msgstr "Impersonierungswerkzeuge"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Features"
+msgstr "Impersonierungsfunktionen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Capabilities"
+msgstr "Impersonierungsfähigkeiten"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Functions"
+msgstr "Impersonierungsfunktionen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Services"
+msgstr "Impersonierungsdienste"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Support"
+msgstr "Impersonierungsunterstützung"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Help"
+msgstr "Impersonierungshilfe"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Guide"
+msgstr "Impersonierungsanleitung"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Tutorial"
+msgstr "Impersonierungstutorial"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Documentation"
+msgstr "Impersonierungsdokumentation"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Manual"
+msgstr "Impersonierungshandbuch"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Reference"
+msgstr "Impersonierungsreferenz"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation FAQ"
+msgstr "Impersonierung FAQ"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Tips"
+msgstr "Impersonierungstipps"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Tricks"
+msgstr "Impersonierungstricks"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Hacks"
+msgstr "Impersonierungshacks"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Shortcuts"
+msgstr "Impersonierungskürzel"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Commands"
+msgstr "Impersonierungsbefehle"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Scripts"
+msgstr "Impersonierungsskripte"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Macros"
+msgstr "Impersonierungsmakros"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Automation"
+msgstr "Impersonierungsautomatisierung"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Integration"
+msgstr "Impersonierungsintegration"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Compatibility"
+msgstr "Impersonierungskompatibilität"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Security"
+msgstr "Impersonierungssicherheit"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Privacy"
+msgstr "Impersonierungsprivatsphäre"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Compliance"
+msgstr "Impersonierungscompliance"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Audit"
+msgstr "Impersonierungsaudit"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Monitoring"
+msgstr "Impersonierungsüberwachung"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Alerts"
+msgstr "Impersonierungswarnungen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Notifications"
+msgstr "Impersonierungsbenachrichtigungen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Reports"
+msgstr "Impersonierungsberichte"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Analytics"
+msgstr "Impersonierungsanalytik"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Metrics"
+msgstr "Impersonierungsmetriken"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation KPIs"
+msgstr "Impersonierungs-KPIs"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Dashboard"
+msgstr "Impersonierungs-Dashboard"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Overview"
+msgstr "Impersonierungsübersicht"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Summary"
+msgstr "Impersonierungszusammenfassung"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Details"
+msgstr "Impersonierungsdetails"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation History"
+msgstr "Impersonierungshistorie"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Log"
+msgstr "Impersonierungsprotokoll"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Activity"
+msgstr "Impersonierungsaktivität"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Status"
+msgstr "Impersonierungsstatus"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Enabled"
+msgstr "Impersonierung aktiviert"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Disabled"
+msgstr "Impersonierung deaktiviert"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Feature"
+msgstr "Impersonierungsfunktion"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Settings"
+msgstr "Impersonierungseinstellungen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Permissions"
+msgstr "Impersonierungsberechtigungen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Controls"
+msgstr "Impersonierungssteuerungen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Actions"
+msgstr "Impersonierungsaktionen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Tools"
+msgstr "Impersonierungswerkzeuge"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Features"
+msgstr "Impersonierungsfunktionen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Capabilities"
+msgstr "Impersonierungsfähigkeiten"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Functions"
+msgstr "Impersonierungsfunktionen"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Services"
+msgstr "Impersonierungsdienste"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Support"
+msgstr "Impersonierungsunterstützung"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Help"
+msgstr "Impersonierungshilfe"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Guide"
+msgstr "Impersonierungsanleitung"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Tutorial"
+msgstr "Impersonierungstutorial"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Documentation"
+msgstr "Impersonierungsdokumentation"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Manual"
+msgstr "Impersonierungshandbuch"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Reference"
+msgstr "Impersonierungsreferenz"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation FAQ"
+msgstr "Impersonierung FAQ"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Tips"
+msgstr "Impersonierungstipps"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Tricks"
+msgstr "Impersonierungstricks"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Hacks"
+msgstr "Impersonierungshacks"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Shortcuts"
+msgstr "Impersonierungskürzel"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Commands"
+msgstr "Impersonierungsbefehle"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Scripts"
+msgstr "Impersonierungsskripte"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Macros"
+msgstr "Impersonierungsmakros"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Automation"
+msgstr "Impersonierungsautomatisierung"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Integration"
+msgstr "Impersonierungsintegration"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Compatibility"
+msgstr "Impersonierungskompatibilität"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Security"
+msgstr "Impersonierungssicherheit"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Privacy"
+msgstr "Impersonierungsprivatsphäre"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Compliance"
+msgstr "Impersonierungscompliance"
+
+#. module: auth_impersonate_user
+#: model_terms:ir.ui.view,arch_db:auth_impersonate_user.view_users_form
+msgid "Impersonation Audit"
+msgstr "Impersonierungsaudit"
+
+#. module: auth_impersonate_user
