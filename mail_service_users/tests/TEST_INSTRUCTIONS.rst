@@ -5,6 +5,6 @@
 Warning
 =======
 
-This module changes how active users are calculated on the system. 
-If this extension is active, you may be in breach of the terms of 
+This module changes how active users are calculated on the system.
+If this extension is active, you may be in breach of the terms of
 your Odoo Enterprise subscription agreement.
