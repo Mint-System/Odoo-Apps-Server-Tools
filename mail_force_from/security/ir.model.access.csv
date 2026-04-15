@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mail_alias_domain_force_from_user,access.mail.alias.domain.force_from.user,model_mail_alias_domain_force_from,base.group_user,1,0,0,0
+access_mail_alias_domain_force_from_manager,access.mail.alias.domain.force_from.manager,model_mail_alias_domain_force_from,base.group_erp_manager,1,1,1,1

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="mail_alias_domain_view_form" model="ir.ui.view">
+        <field name="name">mail_default_from.mail_alias_domain_view_form</field>
+        <field name="model">mail.alias.domain</field>
+        <field name="inherit_id" ref="mail.mail_alias_domain_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="inside">
+                <group string="Force From Address">
+                    <field
+                        name="force_from_ids"
+                        nolabel="1"
+                        context="{'default_domain_id': id}"
+                    >
+                        <list editable="top">
+                            <field name="force_from" />
+                            <field name="model_id" />
+                        </list>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
