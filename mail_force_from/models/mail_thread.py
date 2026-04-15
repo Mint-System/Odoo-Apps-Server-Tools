@@ -17,8 +17,12 @@ class MailThread(models.AbstractModel):
         if self.env.user.company_id.alias_domain_id:
             force_from_email = self.env.user.company_id.alias_domain_id.get_force_from_email(model_name=self._name)
             if force_from_email:
+                # tools.formataddr((
+                #     author_id.name or u"False",
+                #     ','.join(force_from_email)
+                # ))
                 email_from = force_from_email
 
-            _logger.warning([force_from_email])
+            # _logger.warning([force_from_email])
 
         return author_id, email_from
