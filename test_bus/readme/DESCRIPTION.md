@@ -1,0 +1,1 @@
+Simple test of Odoo Bus Service funcionality.
