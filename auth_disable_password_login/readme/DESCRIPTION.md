@@ -1,0 +1,1 @@
+Disable password login for selected user.
