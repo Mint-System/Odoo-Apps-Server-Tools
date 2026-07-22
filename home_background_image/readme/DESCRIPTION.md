@@ -1,0 +1,1 @@
+Set a background image for the Odoo company.
