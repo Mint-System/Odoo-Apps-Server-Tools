@@ -1,0 +1,8 @@
+- Go to Settings > Technical > Outgoing Mail Servers
+- Configure a working and tested mail server for outgoing mails
+- Open a contact and send mail to the contact
+- Open Settings > Technical > Emails and confirm that mail was not sent
+- Confirm that failure reason is "Outgoing mail server ... is not allowed to send emails for model 'res.partner'."
+- Open mail server configuration and add 'Contact' to allowed models
+- Send new mail to contact 
+- Confirm that mail passed check 
