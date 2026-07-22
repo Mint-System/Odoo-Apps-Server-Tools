@@ -1,0 +1,3 @@
+- Go to Settings > General Settings > Companies > Update Info
+- Edit Home Background Image Thumbnail and upload image
+- Confirm start page background image

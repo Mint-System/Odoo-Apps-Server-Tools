@@ -1,15 +1,15 @@
 /** @odoo-module **/
 
-import { patch } from "@web/core/utils/patch";
-import { SubscriptionManager } from "@web_enterprise/webclient/home_menu/enterprise_subscription_service";
-import { serializeDate } from "@web/core/l10n/dates";
-import { browser } from "@web/core/browser/browser";
+import {patch} from "@web/core/utils/patch";
+import {SubscriptionManager} from "@web_enterprise/webclient/home_menu/enterprise_subscription_service";
+import {serializeDate} from "@web/core/l10n/dates";
+import {browser} from "@web/core/browser/browser";
 
-const { DateTime } = luxon;
+const {DateTime} = luxon;
 
 patch(SubscriptionManager.prototype, {
     async buy() {
-        const limitDate = serializeDate(DateTime.utc().minus({ days: 15 }));
+        const limitDate = serializeDate(DateTime.utc().minus({days: 15}));
         const nbUsers = await this.orm.call("res.users", "search_count", [
             [
                 ["share", "=", false],
@@ -22,9 +22,11 @@ patch(SubscriptionManager.prototype, {
     },
 
     async upsell() {
-        const limitDate = serializeDate(DateTime.utc().minus({ days: 15 }));
+        const limitDate = serializeDate(DateTime.utc().minus({days: 15}));
         const [enterpriseCode, nbUsers] = await Promise.all([
-            this.orm.call("ir.config_parameter", "get_param", ["database.enterprise_code"]),
+            this.orm.call("ir.config_parameter", "get_param", [
+                "database.enterprise_code",
+            ]),
             this.orm.call("res.users", "search_count", [
                 [
                     ["share", "=", false],

@@ -5,6 +5,7 @@ from odoo.http import request
 
 _logger = logging.getLogger(__name__)
 
+
 class BusController(http.Controller):
     """Controller for handling bus-related requests."""
 
@@ -15,8 +16,6 @@ class BusController(http.Controller):
         """
         payload = kw or {"id": 999, "name": "Hello!"}
         # Send data to the listener.
-        request.env["bus.bus"]._sendone(
-            "realtime-bus-test", "realtime-bus-test/sending-message", payload
-        )
+        request.env["bus.bus"]._sendone("realtime-bus-test", "realtime-bus-test/sending-message", payload)
         _logger.info("Data sent to bus:", payload)
         return f"{payload['name']}"

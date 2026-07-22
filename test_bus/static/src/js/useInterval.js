@@ -1,8 +1,8 @@
 /** @odoo-module **/
 
-import { browser } from "@web/core/browser/browser";
+import {browser} from "@web/core/browser/browser";
 
-import { onMounted, onWillUnmount } from "@odoo/owl";
+import {onMounted, onWillUnmount} from "@odoo/owl";
 
 /**
  * Creates an interval that will call the given callback every

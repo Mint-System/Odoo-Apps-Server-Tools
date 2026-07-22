@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="test_bus_model_form_view" model="ir.ui.view">
         <field name="name">test_bus.test_bus_model_form_view</field>
         <field name="model">test.bus.model</field>
@@ -8,17 +7,19 @@
             <form>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="action_trigger_bus" 
-                                type="object" 
-                                class="oe_stat_button" 
-                                icon="fa-bell">
-                            <field name="counter" widget="statinfo" string="Counter"/>
+                        <button
+                            name="action_trigger_bus"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-bell"
+                        >
+                            <field name="counter" widget="statinfo" string="Counter" />
                         </button>
                     </div>
                     <div class="oe_title">
-                        <label for="name"/>
+                        <label for="name" />
                         <h1>
-                            <field name="name" placeholder="Enter name..."/>
+                            <field name="name" placeholder="Enter name..." />
                         </h1>
                     </div>
                 </sheet>
@@ -31,8 +32,8 @@
         <field name="model">test.bus.model</field>
         <field name="arch" type="xml">
             <list>
-                <field name="name"/>
-                <field name="counter"/>
+                <field name="name" />
+                <field name="counter" />
             </list>
         </field>
     </record>
@@ -43,16 +44,13 @@
         <field name="view_mode">list,form</field>
     </record>
 
+    <menuitem id="menu_test_bus_root" name="Test Bus" sequence="100" />
 
-
-    <menuitem id="menu_test_bus_root"
-              name="Test Bus"
-              sequence="100"/>
-
-    <menuitem id="menu_test_bus_model"
-              name="Test Bus Models"
-              parent="menu_test_bus_root"
-              action="action_test_bus_model"
-              sequence="10"/>
-
+    <menuitem
+        id="menu_test_bus_model"
+        name="Test Bus Models"
+        parent="menu_test_bus_root"
+        action="action_test_bus_model"
+        sequence="10"
+    />
 </odoo>

@@ -1,6 +1,6 @@
 /** @odoo-module **/
 
-import { Component, useState, xml } from "@odoo/owl";
+import {Component, useState, xml} from "@odoo/owl";
 
 export class TestBusComponent extends Component {
     static template = xml`
@@ -13,12 +13,12 @@ export class TestBusComponent extends Component {
     `;
 
     setup() {
-        this.state = useState({ data: [] });
+        this.state = useState({data: []});
         this.busService = this.env.services.bus_service;
         // Add the channel to listen to.
-        this.busService.addChannel('realtime-bus-test');
+        this.busService.addChannel("realtime-bus-test");
         // Listen to the event name after the channel is added.
-        this.busService.subscribe("realtime-bus-test/sending-message", payload => {
+        this.busService.subscribe("realtime-bus-test/sending-message", (payload) => {
             console.log("Bus message received:", payload);
         });
     }
