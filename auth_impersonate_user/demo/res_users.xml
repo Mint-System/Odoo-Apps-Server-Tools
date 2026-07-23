@@ -2,9 +2,6 @@
     <record id="auth_impersonate_user.impersonate_user_group" model="res.groups">
         <field name="user_ids" eval="[(4, ref('base.user_demo'))]" />
     </record>
-</odoo>
-
-<odoo>
     <record id="auth_impersonate_user.impersonate_admin_group" model="res.groups">
         <field name="user_ids" eval="[(4, ref('base.user_admin'))]" />
     </record>

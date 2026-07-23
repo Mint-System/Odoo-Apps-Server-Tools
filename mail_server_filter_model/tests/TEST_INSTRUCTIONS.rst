@@ -1,8 +1,22 @@
+Init:
+
+- Start mailpit
+- Init contacts app
+
+Configure model:
+
 - Go to Settings > Technical > Outgoing Mail Servers
-- Configure a working and tested mail server for outgoing mails
-- Open a contact and send mail to the contact
-- Open Settings > Technical > Emails and confirm that mail was not sent
-- Confirm that failure reason is "Outgoing mail server ... is not allowed to send emails for model 'res.partner'."
-- Open mail server configuration and add 'Contact' to allowed models
-- Send new mail to contact
-- Confirm that mail passed check
+- Create entry for mailpit with host localhost:1025
+- Add res.partner to allowed models
+
+Send message:
+
+- Open any contact and send a message
+- Ensure it shows up in mailpit
+
+Disallow send message:
+
+- Remove res.partner from allowed models
+- Send a message on the same contact
+- Ensure the mail is not send
+- Open Settings > Technical > Emails, open the mail and check the error message
