@@ -5,7 +5,7 @@
         Testing bus service
     """,
     "author": "Mint System GmbH",
-    "website": "https://www.mint-system.ch",
+    "website": "https://www.mint-system.ch/",
     "category": "Repository",
     "development_status": "Production/Stable",
     "version": "19.0.1.0.0",
@@ -16,11 +16,10 @@
     "application": False,
     "auto_install": False,
     "images": ["images/screen.png"],
-    'assets': {
-    'web.assets_backend': [
-        'test_bus/static/src/components/live_data.js',
-        'test_bus/static/src/components/live_data.xml',
-    ],
-},
-    
+    "assets": {
+        "web.assets_backend": [
+            "test_bus/static/src/components/live_data.js",
+            "test_bus/static/src/components/live_data.xml",
+        ],
+    },
 }

@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.ir_mail_server_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='from_filter']" position="before">
-                <field name="model_ids" widget="many2many_tags"/>
+                <field name="model_ids" widget="many2many_tags" />
             </xpath>
         </field>
     </record>
