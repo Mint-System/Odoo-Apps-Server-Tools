@@ -7,7 +7,12 @@
         <field name="arch" type="xml">
             <data>
                 <xpath expr="//field[@name='logo']" position="after">
-                    <field name="background_image" widget="image" class="oe_avatar" alt="Your Background Image" />
+                    <field
+                        name="background_image"
+                        widget="image"
+                        class="oe_avatar"
+                        alt="Your Background Image"
+                    />
                 </xpath>
             </data>
         </field>

@@ -1,1 +1,0 @@
-Restrict mail server to messages connected to allowed data model.
