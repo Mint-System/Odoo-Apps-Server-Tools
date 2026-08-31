@@ -22,7 +22,7 @@ class ImpersonateHome(Home):
 
             # Set new session info
             uid = request.session.uid = int(request.params["uid"])
-            request.env["res.users"].clear_caches()
+            request.env.registry.clear_cache()
             request.session.session_token = security.compute_session_token(request.session, request.env)
 
         return request.redirect(self._login_redirect(uid))
