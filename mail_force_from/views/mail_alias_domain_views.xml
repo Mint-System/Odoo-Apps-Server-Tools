@@ -10,6 +10,7 @@
                     <field
                         name="force_from_ids"
                         nolabel="1"
+                        colspan="2"
                         context="{'default_domain_id': id}"
                     >
                         <list editable="top">

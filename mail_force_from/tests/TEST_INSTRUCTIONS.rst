@@ -3,4 +3,4 @@
 - Add default from "support" and link with "helpdesk.ticket"
 - Open a random ticket
 - Send a message and open mail catcher
-- Ensure the from address matches the configuration
+- Ensure the from address matches "support@restic.ch"
