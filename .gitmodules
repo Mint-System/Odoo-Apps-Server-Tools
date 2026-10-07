@@ -1,4 +1,0 @@
-[submodule "addons/server_tools"]
-	path = addons/server_tools
-	url = git@github.com:Mint-System/Odoo-Apps-Server-Tools
-	branch = 20.0

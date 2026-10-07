@@ -13,5 +13,5 @@ git clone git@github.com:Mint-System/Odoo-Apps-Server-Tools.git ./addons/server_
 ## Available modules
 
 | Module | Summary |
-| ------ | ------- |
-|        |         |
+| --- | --- |
+| [auth_disable_password_login](auth_disable_password_login) | Disable password login for selected user. |
