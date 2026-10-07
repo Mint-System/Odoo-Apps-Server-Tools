@@ -1,0 +1,187 @@
+#!/usr/bin/env bash
+set -e
+
+help-table() {
+    local -a rows
+    local max_cmd=0 max_opt=0 max_desc=0
+
+    rows+=("Command|Option|Description")
+    rows+=("all||Run all tasks.")
+    rows+=("install||Setup the local environment.")
+    rows+=("lint||Run pre-commit.")
+    rows+=("build||Build python packages with whool.")
+    rows+=("publish||Publish python packages to PyPi.")
+    rows+=("docs||Update index.html.")
+
+    for row in "${rows[@]}"; do
+        IFS='|' read -r cmd opt desc <<< "$row"
+        (( ${#cmd} > max_cmd )) && max_cmd=${#cmd}
+        (( ${#opt} > max_opt )) && max_opt=${#opt}
+        (( ${#desc} > max_desc )) && max_desc=${#desc}
+    done
+
+    printf '| %-*s | %-*s | %-*s |\n' \
+        "$max_cmd" "Command" \
+        "$max_opt" "Option" \
+        "$max_desc" "Description"
+
+    printf '|-%*s-|-%*s-|-%*s-|\n' \
+        "$max_cmd" "$(printf '%*s' "$max_cmd" '' | tr ' ' '-')" \
+        "$max_opt" "$(printf '%*s' "$max_opt" '' | tr ' ' '-')" \
+        "$max_desc" "$(printf '%*s' "$max_desc" '' | tr ' ' '-')"
+
+    for row in "${rows[@]:1}"; do
+        IFS='|' read -r cmd opt desc <<< "$row"
+        printf '| %-*s | %-*s | %-*s |\n' \
+            "$max_cmd" "$cmd" \
+            "$max_opt" "$opt" \
+            "$max_desc" "$desc"
+    done
+}
+
+help() {
+    local grep_pattern
+    echo
+    if [[ -n "$1" ]]; then
+        grep_pattern="$1"
+        help-table | grep -i "$grep_pattern" | column -t -s'|'
+    else
+        echo "task <command> [options]"
+        echo
+        echo "commands:"
+        echo
+        help-table
+    fi
+    echo
+}
+
+if [[ -d "$HOME/taskfile.build/bin" ]]; then
+    for file in "$HOME/taskfile.build/bin/"*; do
+        if [[ -f "$file" ]]; then
+            source "$file"
+        fi
+    done
+fi
+
+install() {
+    echo 'Setup .venv and install python dependencies'
+    uv venv --clear
+    source .venv/bin/activate
+    uv pip install pre-commit git+https://github.com/OCA/maintainer-tools
+}
+
+lint() {
+    source .venv/bin/activate
+
+    echo 'Run pre-commit'
+    pre-commit run --all-files --show-diff-on-failure --color=always
+}
+
+build() {
+    source .venv/bin/activate
+
+    local root_dir="$(pwd)"
+    local metapackage_dir="$root_dir/setup/_metapackage"
+    local publish_dir="$root_dir/dist"
+    mkdir -p "$publish_dir"
+    rm -rf "$publish_dir"/*
+
+    local server_name="$(basename "$root_dir")"
+    local metapackage_name="odoo-apps-$(echo "$server_name" | sed 's/_/-/g')"
+    oca-gen-metapackage "$metapackage_name"
+
+    local addons=()
+    mapfile -t addons < <(find . -maxdepth 2 -type f -name 'pyproject.toml' | xargs dirname | sed 's|^\./||')
+    for addon in "${addons[@]}"; do
+        cd "$root_dir/$addon"
+        echo "Building $addon"
+        uv build
+        cp dist/*.whl "$publish_dir/"
+        cp dist/*.tar.gz "$publish_dir/"
+        cd "$root_dir"
+    done
+
+    echo 'Installing local wheels for metapackage resolution...'
+    uv pip install "$publish_dir"/*.whl 2>/dev/null || true
+
+    cd "$metapackage_dir"
+    echo "Building $metapackage_name"
+    uv build
+    cp dist/*.whl "$publish_dir/"
+    cp dist/*.tar.gz "$publish_dir/"
+
+    ls "$publish_dir/"
+}
+
+publish() {
+    source .venv/bin/activate
+    local root_dir="$(pwd)"
+    local publish_dir="$root_dir/dist"
+
+    set +e
+    echo "Publishing from $publish_dir to PyPI..."
+
+    for wheel in "$publish_dir"/*.whl; do
+        if [[ ! -f "$wheel" ]]; then
+            continue
+        fi
+
+        echo "Publishing: $wheel"
+        uv publish "$wheel" --username '__token__' --password "$PYPI_TOKEN"
+
+        if (( $? != 0 )); then
+            echo "Failed to publish $wheel."
+        fi
+    done
+
+    echo 'All wheels published successfully.'
+}
+
+docs() {
+    source .venv/bin/activate
+
+    echo 'Update index.html for all modules'
+    for module in ./*; do
+        if [[ -f "$module/README.rst" ]]; then
+            cd "$module" || exit
+            rst2html5 README.rst static/description/index.html
+            cd .. || exit
+        fi
+    done
+
+    # Find marker in readme and clear content after
+    echo 'Clear modules table in README.md'
+    local marker='## Available modules'
+    sed -i "/$marker/Q" 'README.md'
+    echo "$marker" >> 'README.md'
+    echo '' >> 'README.md'
+    echo '| Module | Summary |' >> 'README.md'
+    echo '| --- | --- |' >> 'README.md'
+
+    local manifest_files='./*/__manifest__.py'
+    for manifest_file in $manifest_files; do
+        local module_dir=$(dirname "$manifest_file")
+        local module_name=$(basename "$module_dir")
+        echo "Add summary of $module_name to readme file."
+        local summary=$(python3 -c "import ast; d=ast.literal_eval(open('$manifest_file').read()); print(d.get('summary', '').replace('\n', ' ').strip())")
+        echo "| [$module_name]($module_name) | $summary |" >> 'README.md'
+    done
+}
+
+if declare -f "$1" > /dev/null; then
+    "$1" "${@:2}"
+else
+    case "$1" in
+        all)
+            install
+            docs
+            lint
+            build
+            ;;
+        *)
+            echo "Unknown command: $1"
+            help task
+            exit 1
+            ;;
+    esac
+fi
