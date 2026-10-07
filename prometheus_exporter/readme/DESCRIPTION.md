@@ -1,0 +1,1 @@
+Monitor Odoo metrics with Prometheus.

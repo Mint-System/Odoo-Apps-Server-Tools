@@ -1,0 +1,2 @@
+- Open the /metrics page in Odoo
+- Check if the metric "odoo_database_active_users" shows 2.0
