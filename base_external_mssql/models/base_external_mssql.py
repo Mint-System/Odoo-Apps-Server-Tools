@@ -35,28 +35,21 @@ class BaseExternalMssql(models.Model):
         for record in self:
             record.use_button_is_visible = not record.priority
 
-    @api.constrains("priority", "database")
-    def _check_one_priority_per_database(self):
+    @api.constrains("priority", "database_type")
+    def _check_one_priority_per_database_type(self):
         for record in self.filtered("priority"):
-            if len(record._get_same_database().filtered("priority")) > 1:
-                raise ValidationError(_("Only one data source of database %s can be used.", record.database))
-
-    def _get_same_database(self):
-        """All data sources of this database, including this one (names are case-insensitive)."""
-        self.ensure_one()
-        return self.search([]).filtered(lambda record: record.database.lower() == self.database.lower())
+            if self.search_count([("database_type", "=", record.database_type), ("priority", "=", True)]) > 1:
+                raise ValidationError(_("Only one data source of type %s can be used.", record.database_type))
 
     @api.model
-    def _get_by_database(self, database):
-        """The data source to use for a database: the one with priority, or the only one.
+    def _get_by_database_type(self, database_type):
+        """The data source to use for a database type: the one with priority, or the only one.
 
         Returns an empty recordset if there are several and none has priority.
         """
-        sources = self.search([], order="priority desc, id").filtered(
-            lambda record: record.database.lower() == database.lower()
-        )
+        sources = self.search([("database_type", "=", database_type)], order="priority desc, id")
         if len(sources) > 1 and not sources[0].priority:
-            _logger.warning("Several data sources of database %s, but none is used.", database)
+            _logger.warning("Several data sources of type %s, but none is used.", database_type)
             return self.browse()
         return sources[:1]
 
@@ -183,11 +176,11 @@ class BaseExternalMssql(models.Model):
             }
 
     def set_priority(self):
-        """Use this data source instead of the others of the same database."""
+        """Use this data source instead of the others of the same database type."""
         if len(self) != 1:
             raise ValidationError(_("Please use only one database."))
 
-        (self._get_same_database() - self).write({"priority": False})
+        (self.search([("database_type", "=", self.database_type)]) - self).write({"priority": False})
         self.write({"priority": True})
 
         return True
