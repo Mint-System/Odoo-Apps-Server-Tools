@@ -30,10 +30,35 @@ class BaseExternalMssql(models.Model):
         string="Use DB Button Visibility", compute="_compute_use_button_is_visible", store=False
     )
 
-    @api.depends("priority", "database_type")
+    @api.depends("priority")
     def _compute_use_button_is_visible(self):
         for record in self:
-            record.use_button_is_visible = not record.priority and record.database_type == "interface"
+            record.use_button_is_visible = not record.priority
+
+    @api.constrains("priority", "database")
+    def _check_one_priority_per_database(self):
+        for record in self.filtered("priority"):
+            if len(record._get_same_database().filtered("priority")) > 1:
+                raise ValidationError(_("Only one data source of database %s can be used.", record.database))
+
+    def _get_same_database(self):
+        """All data sources of this database, including this one (names are case-insensitive)."""
+        self.ensure_one()
+        return self.search([]).filtered(lambda record: record.database.lower() == self.database.lower())
+
+    @api.model
+    def _get_by_database(self, database):
+        """The data source to use for a database: the one with priority, or the only one.
+
+        Returns an empty recordset if there are several and none has priority.
+        """
+        sources = self.search([], order="priority desc, id").filtered(
+            lambda record: record.database.lower() == database.lower()
+        )
+        if len(sources) > 1 and not sources[0].priority:
+            _logger.warning("Several data sources of database %s, but none is used.", database)
+            return self.browse()
+        return sources[:1]
 
     @api.depends("server", "database", "username", "password")
     def _compute_connection_string(self):
@@ -158,14 +183,11 @@ class BaseExternalMssql(models.Model):
             }
 
     def set_priority(self):
-        # Ensure only one record is selected
+        """Use this data source instead of the others of the same database."""
         if len(self) != 1:
             raise ValidationError(_("Please use only one database."))
 
-        # Set all records' priority to False
-        self.search([]).write({"priority": False})
-
-        # Set the selected record's priority to True
+        (self._get_same_database() - self).write({"priority": False})
         self.write({"priority": True})
 
         return True
