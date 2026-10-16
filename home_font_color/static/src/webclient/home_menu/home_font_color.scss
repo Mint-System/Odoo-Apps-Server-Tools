@@ -1,0 +1,27 @@
+.o_home_menu {
+    .o_app .o_caption {
+        color: var(--o-home-menu-caption-color, #fff);
+        text-shadow: none;
+    }
+}
+
+
+.o_web_client.o_home_menu_background .o_main_navbar {
+    color: var(--o-home-menu-caption-color, #fff);
+
+    // systray entries: company switcher, user menu, chat, activities …
+    .o_nav_entry,
+    .dropdown-toggle,
+    .o_menu_systray > * > a,
+    .o_menu_systray > * > button,
+    .o_switch_company_menu,
+    .o_user_menu {
+        color: var(--o-home-menu-caption-color, #fff);
+    }
+
+    // icons (fa / oi) usually inherit, but some set their own color
+    .fa, .oi {
+        color: inherit;
+    }
+
+}

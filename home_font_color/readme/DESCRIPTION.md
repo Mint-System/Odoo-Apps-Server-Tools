@@ -1,0 +1,1 @@
+Define font color on home menu.

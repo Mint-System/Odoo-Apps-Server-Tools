@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form" model="ir.ui.view">
+        <field name="name">home_font_color.view_company_form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='color']" position="after">
+                     <field name="home_font_color" widget="color"/>
+            </xpath> 
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,3 @@
+- Go to Settings > General Settings > Companies > Update Info
+- Pick Home Font Color
+- Confirm start page font color
