@@ -1,13 +1,10 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
-import logging
 
 from email.message import EmailMessage
 
 from odoo import api, models
-
-_logger = logging.getLogger(__name__)
 
 
 class MailThread(models.AbstractModel):
@@ -18,27 +15,31 @@ class MailThread(models.AbstractModel):
         msg_dict = super().message_parse(message, save_original=save_original)
 
         attachments = msg_dict.get("attachments", [])
-        _logger.info(
-            "Message parsed - from: %s, to: %s, message_id: %s, subject: %s, "
-            "attachment_count: %s, attachment_names: %s",
-            msg_dict.get("from"),
-            msg_dict.get("to"),
-            msg_dict.get("message_id"),
-            msg_dict.get("subject"),
-            len(attachments),
-            [att[0] for att in attachments if att],
+        self._fetchmail_log_message(
+            "Message parsed - from: {}, to: {}, message_id: {}, subject: {}, "
+            "attachment_count: {}, attachment_names: {}".format(
+                msg_dict.get("from"),
+                msg_dict.get("to"),
+                msg_dict.get("message_id"),
+                msg_dict.get("subject"),
+                len(attachments),
+                [att[0] for att in attachments if att],
+            ),
+            func="message_parse",
         )
 
         for idx, att in enumerate(attachments):
             content = att[1] if len(att) > 1 else None
             content_len = len(content) if content else False
-            _logger.info(
-                "Attachment parsed [%s/%s] - name: %s, content_length: %s, "
-                "checksum: N/A, index_content: N/A, datas: N/A",
-                idx + 1,
-                len(attachments),
-                att[0],
-                content_len,
+            self._fetchmail_log_message(
+                "Attachment parsed [{}/{}] - name: {}, content_length: {}, "
+                "checksum: N/A, index_content: N/A, datas: N/A".format(
+                    idx + 1,
+                    len(attachments),
+                    att[0],
+                    content_len,
+                ),
+                func="message_parse",
             )
 
         return msg_dict
@@ -51,11 +52,13 @@ class MailThread(models.AbstractModel):
 
         for route in routes or []:
             alias_name = route[4].display_name if route[4] else "None"
-            _logger.info(
-                "Message routed - model: %s, thread_id: %s, alias: %s",
-                route[0],
-                route[1],
-                alias_name,
+            self._fetchmail_log_message(
+                "Message routed - model: {}, thread_id: {}, alias: {}".format(
+                    route[0],
+                    route[1],
+                    alias_name,
+                ),
+                func="message_route",
             )
 
         return routes
@@ -64,10 +67,12 @@ class MailThread(models.AbstractModel):
         result = super().message_post(**kwargs)
 
         if self.env.context.get("from_alias") and result:
-            _logger.info(
-                "Message posted - message_id: %s, attachment_ids: %s",
-                result.message_id,
-                result.attachment_ids.ids,
+            self._fetchmail_log_message(
+                "Message posted - message_id: {}, attachment_ids: {}".format(
+                    result.message_id,
+                    result.attachment_ids.ids,
+                ),
+                func="message_post",
             )
 
         return result
@@ -94,15 +99,17 @@ class MailThread(models.AbstractModel):
 
                 content_len = len(content) if content else False
                 datas_len = len(base64.b64encode(content)) if content else False
-                _logger.info(
-                    "Attachment before storage [%s/%s] - name: %s, "
-                    "content_length: %s, checksum: N/A, index_content: N/A, "
-                    "datas_length: %s",
-                    idx + 1,
-                    len(attachments),
-                    name,
-                    content_len,
-                    datas_len,
+                self._fetchmail_log_message(
+                    "Attachment before storage [{}/{}] - name: {}, "
+                    "content_length: {}, checksum: N/A, index_content: N/A, "
+                    "datas_length: {}".format(
+                        idx + 1,
+                        len(attachments),
+                        name,
+                        content_len,
+                        datas_len,
+                    ),
+                    func="_process_attachments_for_post",
                 )
 
         return super()._process_attachments_for_post(
@@ -116,16 +123,34 @@ class MailThread(models.AbstractModel):
             for idx, attachment in enumerate(attachments):
                 datas_val = attachment.datas
                 index_val = attachment.index_content
-                _logger.info(
-                    "Attachment after storage [%s/%s] - name: %s, id: %s, "
-                    "checksum: %s, index_content: %s, datas_length: %s",
-                    idx + 1,
-                    len(attachments),
-                    attachment.name,
-                    attachment.id,
-                    attachment.checksum,
-                    len(index_val) if index_val else False,
-                    len(datas_val) if datas_val else False,
+                self._fetchmail_log_message(
+                    "Attachment after storage [{}/{}] - name: {}, id: {}, "
+                    "checksum: {}, index_content: {}, datas_length: {}".format(
+                        idx + 1,
+                        len(attachments),
+                        attachment.name,
+                        attachment.id,
+                        attachment.checksum,
+                        len(index_val) if index_val else False,
+                        len(datas_val) if datas_val else False,
+                    ),
+                    func="_create_attachments_for_post",
                 )
 
         return attachments
+
+    def _fetchmail_log_message(self, message, func=""):
+        """Write a persistent ir.logging entry in a separate transaction."""
+        with self.pool.cursor() as cr:
+            env = self.env(cr=cr)
+            env["ir.logging"].sudo().create({
+                "name": "fetchmail_incoming_logging",
+                "type": "server",
+                "level": "INFO",
+                "dbname": env.cr.dbname,
+                "message": message,
+                "func": func,
+                "path": "",
+                "line": "1",
+            })
+            env.cr.commit()
