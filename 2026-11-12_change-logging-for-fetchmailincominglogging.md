@@ -1,5 +1,5 @@
 ---
-commit_ref: 0cd3593fec3ea6d1906b8bd7ce6bbc11ef717fae
+commit_ref: b352b5bb5fb873ab3271c9c87a51706fcb39d25c
 title: "change logging for fetchmail_incoming_logging"
 author: "laurens kooijman <laurenskooijman@gmail.com>"
 action: implement
