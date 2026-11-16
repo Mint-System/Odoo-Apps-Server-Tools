@@ -1,15 +1,15 @@
 ---
-commit_ref:
+commit_ref: ea4d19738dffc4255aa99c1420973d35e6950d7f
 title: "Create new module Fetchmail Incoming Loggging"
 author: "Janik von Rotz <login@janikvonrotz.ch>"
 action: implement
-state: draft
-date_completed: YYYY-MM-DD
-harness:
-provider:
-model:
-input_tokens:
-output_tokens:
+state: completed
+date_completed: 2026-11-16
+harness: pi
+provider: moonshotai
+model: moonshotai/Kimi-K2.6
+input_tokens: 44362
+output_tokens: 14744
 ---
 
 # Create new module Fetchmail Incoming Loggging
@@ -28,16 +28,19 @@ Create a new module `addons/server_tools/fetchmail_incoming_logging`.
 
 It logs the the `mail.thread` processing methods to `ir.logging`. I want to know which methods are triggered for a mail processing.
 
-And if available I want to know if attachment data has been processed.
-
-Inherit the `mail.thread` model and create a new `_log_message_state(self, log_message)` that prepares the values for `ir.logging`.
-
+Log whether these methods were used:
 - `message_parse`
 - `message_route`
 - `message_post`
 - `_process_attachments_for_post`
 - `_create_attachments_for_post`
 - `_fetchmail_log_message`
+
+And if available I want to know if attachment data has been processed.
+
+Inherit the `mail.thread` model and create a new `_log_message_state(self, log_message)` that prepares the values for `ir.logging`.
+
+Set the `name` of the log to `fetchmail_x`, where x is the message_id.
 
 Here some pseudo code:
 
@@ -78,6 +81,10 @@ Here some pseudo code:
 
 ## Worklog
 
-@Clanker Add a summary here once the task has been completed.
+- Created module `addons/server_tools/fetchmail_incoming_logging` using project templates (`task create-module` / `generate-module-inherit-model` logic).
+- Inherits `mail.thread` and logs processing steps to `ir.logging` via a single `_fetchmail_log_message` helper.
+- Overrode `message_parse`, `message_route`, `message_post`, `_process_attachments_for_post`, and `_create_attachments_for_post`; each passes its literal method name as `log_message` and `func`.
+- `ir.logging` records use `name = fetchmail_{message_id}` and include attachment counts when available.
+- Uses `.sudo().create(...)` because `ir.logging` is only writable by `group_erp_manager`.
 
 @Clanker If author confirms results set frontmatter state to completed, otherwise to aborted. Update date, harness, provider and model. If you have access to session info also add token count. Finally, update the changelog with the most important changes.
