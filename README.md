@@ -14,6 +14,7 @@ git clone git@github.com:Mint-System/Odoo-Apps-Server-Tools.git ./addons/server_
 
 | Module | Summary |
 | --- | --- |
-| [auth_disable_password_login](auth_disable_password_login) | Disable password login for selected user. |
-| [auth_impersonate_user](auth_impersonate_user) | Impersonate another users. |
-| [prometheus_exporter](prometheus_exporter) | Monitor Odoo metrics with Prometheus. |
+| [auth_disable_password_login](auth_disable_password_login) |         Disable password login for selected user. |
+| [auth_impersonate_user](auth_impersonate_user) |         Impersonate another users. |
+| [prometheus_exporter](prometheus_exporter) |         Monitor Odoo metrics with Prometheus. |
+| [web_font_georgia](web_font_georgia) |         Add Georgia font to selection. |
