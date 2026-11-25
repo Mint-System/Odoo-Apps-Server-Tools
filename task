@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+# Usage: https://taskfile.build/usage/
 set -e
+
+if [[ -f ".env" ]]; then
+    # shellcheck source=/dev/null
+    source ".env"
+fi
 
 help-table() {
     local -a rows
@@ -168,19 +174,37 @@ docs() {
     done
 }
 
-if declare -f "$1" > /dev/null; then
-    "$1" "${@:2}"
+all() {
+    install
+    docs
+    lint
+    build
+}
+
+if [[ "$1" == *","* ]]; then
+    # Split comma-separated commands
+    IFS=',' read -ra COMMANDS <<< "$1"
+    for cmd in "${COMMANDS[@]}"; do
+        # Trim whitespace
+        cmd=$(echo "$cmd" | xargs)
+        if declare -f "$cmd" > /dev/null; then
+            "$cmd"
+        else
+            echo "Unknown command: $cmd"
+            help "$@"
+            exit 1
+        fi
+    done
+elif declare -f "$1" > /dev/null; then
+    if [[ "${2:-}" == "tfhelp" ]]; then
+        help "$1"
+    else
+        "$1" "${@:2}"
+    fi
 else
     case "$1" in
-        all)
-            install
-            docs
-            lint
-            build
-            ;;
         *)
             echo "Unknown command: $1"
-            help task
             exit 1
             ;;
     esac
